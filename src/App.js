@@ -4,7 +4,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        首页更新一点吧
+        首页更新一点吧,试一下hooks
       </div>
     )
   }
