@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Right from './header-right';
 import "./index.less";
 
 class Header extends PureComponent {
@@ -26,7 +27,7 @@ class Header extends PureComponent {
               </div>
             </div>
             <div className="header-bar-right">
-              
+              <Right />
             </div>
           </div>
         </div>

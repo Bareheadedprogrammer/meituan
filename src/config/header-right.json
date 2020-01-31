@@ -1,0 +1,95 @@
+{
+  "rightList": [
+    {
+      "name": "我的美团",
+      "url": "/userinfo",
+      "children": [
+        {
+          "url": "/orders",
+          "name": "我的订单"
+        },
+        {
+          "url": "/collections",
+          "name": "我的收藏"
+        },
+        {
+          "url": "/di",
+          "name": "抵用券"
+        },
+        {
+          "url": "/setting",
+          "name": "账号设置"
+        }
+      ]
+    },
+    {
+      "name": "手机APP",
+      "url": "/down/meituan"
+    },
+    {
+      "name": "商家中心",
+      "url": "none",
+      "width": "width-140",
+      "children": [
+        {
+          "url": "/loading",
+          "name": "美团餐饮商户中心"
+        },
+        {
+          "url": "/loading",
+          "name": "登录商家中心"
+        },
+        {
+          "url": "/loading",
+          "name": "美团智能收银"
+        },
+        {
+          "url": "/loading",
+          "name": "我想合作"
+        },
+        {
+          "url": "/loading",
+          "name": "手机免费开店"
+        },
+        {
+          "url": "/loading",
+          "name": "餐饮代理商招募"
+        },
+        {
+          "url": "/loading",
+          "name": "商家申请开票"
+        },
+        {
+          "url": "/loading",
+          "name": "免费合作美团排队"
+        }
+      ]
+    },
+    {
+      "name": "美团规则",
+      "url": "none",
+      "children": [
+        {
+          "name": "规则中心",
+          "url": "/loading"
+        },
+        {
+          "name": "规则目录",
+          "url": "/loading"
+        },
+        {
+          "name": "规则评议院",
+          "url": "/loading"
+        }
+      ]
+    },
+    {
+      "name": "网站导航",
+      "url": "none",
+      "width": "width-1200",
+      "children":{
+        "more": true
+      }
+    }
+  ]
+}
