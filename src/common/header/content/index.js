@@ -64,7 +64,6 @@ class Content extends PureComponent {
 
   render() {
     const url = this.props.match.url;
-    console.log(this.state.isShow);
     return (
       <div
         className={["header-content", url === "/" ? "bottom-30" : null].join(
