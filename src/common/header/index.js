@@ -9,7 +9,7 @@ class Header extends PureComponent {
   render() {
     const { city } = this.props;
     return (
-      <div>
+      <div className="com-header">
         <div className="header-bar">
           <div className="header-bar-container">
             <div className="header-bar-left">

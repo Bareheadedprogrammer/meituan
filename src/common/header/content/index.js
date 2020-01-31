@@ -13,7 +13,12 @@ class Content extends PureComponent {
               </Link>
           </div>
           <div className="header-search-module">
-            
+            <div className="header-search-block">
+                <input type="text" className="header-search-input" placeholder="搜索商家或地点" />
+                <button className="header-search-btn">
+                  <span className="icon-sousuo iconfont"></span>
+                </button>
+            </div>
           </div>
       </div>
     );
