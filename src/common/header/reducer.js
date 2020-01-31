@@ -1,7 +1,8 @@
 import { fromJS } from 'immutable';
 
 const defaultData = fromJS({
-    name: "我是默认数据"
+    isLogin: false,
+    city: "哈尔滨"
 })
 
 export default ( state = defaultData, action ) =>{

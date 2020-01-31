@@ -1,0 +1,16 @@
+{
+  "id": "1623818",
+  "name": "美团",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8802647",
+      "name": "定位",
+      "font_class": "dingwei",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    }
+  ]
+}
