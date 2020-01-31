@@ -29,6 +29,68 @@
         transform: translate(-50%);
         z-index: 999;
 
+        .header-search-suggest {
+            width: 85.45%;
+            display: none;
+            box-sizing: border-box;
+            position: absolute;
+            border: 1px solid #E5E5E5;
+            border-top: none;
+            background: #fff;
+            z-index: 999;
+            box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            color: #999;
+            font-size: 12px;
+            text-align: left;
+
+            ul a {
+                line-height: 1.6;
+                display: block;
+            }
+
+            .header-search-noinput {
+                display: block;
+                padding: 10px;
+            }
+
+            .header-search-hotword {
+                width: auto;
+                padding-top: 5px;
+                margin-bottom: 5px;
+                padding-left: 0;
+
+
+            }
+
+            &.hasinput {
+                .header-search-noinput {
+                    display: none;
+                }
+
+                .header-search-hasinput {
+                    display: block;
+                }
+            }
+
+            .header-search-hasinput {
+                display: none;
+
+                a {
+                    padding: 3px 10px;
+                    color: #333;
+                    line-height: 1.6;
+                    display: block;
+
+                    &:hover {
+                        color: rgb(254, 140, 0);
+                        background-color: rgb(248, 248, 248);
+                    }
+                }
+            }
+        }
+
         .header-search-block {
             width: 550px;
             height: 40px;
@@ -47,7 +109,8 @@
                 background: transparent;
                 width: 85.45%;
                 outline: none;
-                &::placeholder{
+
+                &::placeholder {
                     color: #999999;
                 }
             }
@@ -68,4 +131,19 @@
             }
         }
     }
+}
+
+.bottom-30 {
+    padding-bottom: 30px;
+}
+
+.com-header .header-search-hotword {
+    padding-top: 8px;
+    font-size: 12px;
+    width: 550px;
+    overflow: hidden;
+    height: 25px;
+    box-sizing: border-box;
+    text-align: left;
+    padding-left: 12px;
 }

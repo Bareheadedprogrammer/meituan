@@ -107,7 +107,7 @@ checkBrowsers(paths.appPath, isInteractive)
       urls.lanUrlForConfig
     );
     const devServer = new WebpackDevServer(compiler, serverConfig);
-    // Launch WebpackDevServer.
+    // Launch WebpackDevServer.]
     devServer.listen(port, HOST, err => {
       if (err) {
         return console.log(err);
