@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import data from "../../config/header-right.json";
-import Title from "./title";
+import Title from "./more";
 import "./index.less";
 
 class Right extends PureComponent {
