@@ -62,6 +62,13 @@ class Content extends PureComponent {
     this.getData();
   };
 
+  toSearchTip = (data)=>{
+    this.setState({
+      key: data
+    })
+    this.refs.search.style.display = "none";
+  }
+
   render() {
     const url = this.props.match.url;
     return (
@@ -83,7 +90,8 @@ class Content extends PureComponent {
               placeholder="搜索商家或地点"
               onFocus={this.searchEverything}
               onBlur={this.searchNoEverything}
-              onKeyUp={this.onChangeSearch}
+              onChange={this.onChangeSearch}
+              value={this.state.key}
             />
             <button className="header-search-btn">
               <span className="icon-sousuo iconfont"></span>
@@ -110,7 +118,7 @@ class Content extends PureComponent {
                 {this.state.dataArr.map((item, index) => {
                   return (
                     <li key={index}>
-                      <Link to={item.query}>{item.query}</Link>
+                      <Link onClick={()=>{this.toSearchTip(item.query)}} to = {{pathname:`/s/${item.query}`}} >{item.query}</Link>
                     </li>
                   );
                 })}

@@ -24,8 +24,10 @@
 
 ```js
 git clone https://github.com/2662419405/meituan.git
-cd meituan && npm
+cd meituan && npm install
 ```
+
+> 如果npm安装不上可以试一下yarn
 
 ## 运行
 
