@@ -101,3 +101,20 @@ module.exports = function(app) {
 
 > 坑: 在package.json中设置proxy新版本只能设置字符串
 
+## 历史记录完成,存储到localStroge
+
+注意: 由于数据存储为数组,必须转为JSON才可以
+
+1. 存储数据
+
+```js
+localStorage.setItem("meituan_search", JSON.stringify(arr));
+```
+
+2. 读取数据
+
+```js
+historyArr: JSON.parse(localStorage.getItem("meituan_search")) || []
+```
+
+坑: 由于点击历史记录不能继续存储,只有新点击的才能存储

@@ -10,7 +10,8 @@ class Content extends PureComponent {
     this.state = {
       key: "",
       isShow: false,
-      dataArr: []
+      dataArr: [],
+      historyArr: JSON.parse(localStorage.getItem("meituan_search")) || []
     };
   }
 
@@ -59,12 +60,32 @@ class Content extends PureComponent {
     this.getData();
   };
 
-  toSearchTip = (data)=>{
+  //清空数据 
+  handlerClearHistory = ()=>{
+    localStorage.setItem("meituan_search", JSON.stringify([]));
     this.setState({
-      key: data
-    })
+      historyArr: []
+    });
     this.refs.search.style.display = "none";
   }
+
+  toSearchTip = (data, flag) => {
+    if (flag) {
+      this.setState({
+        key: data
+      });
+    } else {
+      this.setState({
+        key: data,
+        historyArr: [...this.state.historyArr, data]
+      });
+    }
+
+    // 加到缓存中
+    const arr = this.state.historyArr;
+    localStorage.setItem("meituan_search", JSON.stringify(arr));
+    this.refs.search.style.display = "none";
+  };
 
   render() {
     const url = this.props.match.url;
@@ -95,6 +116,8 @@ class Content extends PureComponent {
             </button>
           </div>
           <div
+            onMouseEnter={this.mouseEnterEvent}
+            onMouseLeave={this.mouseLeaveEvent}
             className={
               this.state.key.length > 0
                 ? "header-search-suggest hasinput"
@@ -103,19 +126,46 @@ class Content extends PureComponent {
             ref="search"
           >
             <div className="header-search-noinput">
+              {this.state.historyArr.length > 0 && (
+                <div className="header-search-history">
+                  <h6>最近搜索</h6>
+                  <span 
+                    onClick={this.handlerClearHistory}
+                  className="header-search-clean">删除搜索历史</span>
+                  <ul>
+                    {this.state.historyArr.map((item, index) => {
+                      return (
+                        <li key={index}>
+                          <Link
+                            onClick={() => {
+                              this.toSearchTip(item, true);
+                            }}
+                            to={{ pathname: `/s/${item}` }}
+                          >
+                            {item}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
               <h6>热门搜索</h6>
               <div className="header-search-hotword"></div>
             </div>
-            <div
-              className="header-search-hasinput"
-              onMouseEnter={this.mouseEnterEvent}
-              onMouseLeave={this.mouseLeaveEvent}
-            >
+            <div className="header-search-hasinput">
               <ul>
                 {this.state.dataArr.map((item, index) => {
                   return (
                     <li key={index}>
-                      <Link onClick={()=>{this.toSearchTip(item.query)}} to = {{pathname:`/s/${item.query}`}} >{item.query}</Link>
+                      <Link
+                        onClick={() => {
+                          this.toSearchTip(item.query);
+                        }}
+                        to={{ pathname: `/s/${item.query}` }}
+                      >
+                        {item.query}
+                      </Link>
                     </li>
                   );
                 })}

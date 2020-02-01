@@ -53,6 +53,30 @@
             .header-search-noinput {
                 display: block;
                 padding: 10px;
+
+                .header-search-history {
+                    .header-search-clean {
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        cursor: pointer;
+                    }
+                    ul li {
+                        color: #999;
+                        margin-right: 10px;
+                        display: inline-block;
+
+                        a {
+                            line-height: 1.6;
+                            display: block;
+                            color: #666;
+
+                            &:hover {
+                                color: rgb(254, 140, 0);
+                            }
+                        }
+                    }
+                }
             }
 
             .header-search-hotword {
