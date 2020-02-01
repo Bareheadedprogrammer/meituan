@@ -32,6 +32,8 @@ cd meituan && npm install
 ## 运行
 
 ```js
+// 采用数据爬虫,爬取官网数据
+npm run server 
 npm run start
 ```
 

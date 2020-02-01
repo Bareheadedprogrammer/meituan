@@ -5,7 +5,7 @@ class Home extends PureComponent {
   render() {
     return (
       <div>
-          123
+          123112312321
       </div>
     );
   }
