@@ -1,0 +1,81 @@
+{
+  "data": [
+    {
+      "title": "美食",
+      "url": "/loading",
+      "icon": "meishi",
+
+      "children": [{}]
+    },
+    {
+      "title": "外賣",
+      "url": "/loading",
+      "icon": "meishi",
+
+      "children": [{}]
+    },
+    {
+      "title": "酒店",
+      "url": "/loading",
+      "icon": "meishi",
+      "hot": true,
+      "children": [{}]
+    },
+    {
+      "title": "美食",
+      "url": "/loading",
+      "icon": "meishi",
+
+      "children": [{}]
+    },
+    {
+      "title": "美食",
+      "url": "/loading",
+      "icon": "meishi",
+
+      "children": [{}]
+    },
+    {
+      "title": "美食",
+      "url": "/loading",
+      "icon": "meishi",
+
+      "children": [{}]
+    },
+    {
+      "title": "美食",
+      "url": "/loading",
+      "icon": "meishi",
+
+      "children": [{}]
+    },
+    {
+      "title": "美食",
+      "url": "/loading",
+      "icon": "meishi",
+
+      "children": [{}]
+    },
+    {
+      "title": "美食",
+      "url": "/loading",
+      "icon": "meishi",
+
+      "children": [{}]
+    },
+    {
+      "title": "美食",
+      "url": "/loading",
+      "icon": "meishi",
+
+      "children": [{}]
+    },
+    {
+      "title": "美食",
+      "url": "/loading",
+      "icon": "meishi",
+
+      "children": [{}]
+    }
+  ]
+}
