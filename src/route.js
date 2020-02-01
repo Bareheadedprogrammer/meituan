@@ -4,6 +4,7 @@ import Header from "./common/header";
 import { Provider } from "react-redux";
 import Home from "./component/Home";
 import Error from "./component/404";
+import FooterNav from './component/footerNav';
 import Footer from './component/footer';
 import Login from "./component/login";
 import Search from './component/search';
@@ -23,6 +24,7 @@ export default class route extends PureComponent {
               <Route path="/s/:content" component={Search}></Route>
               <Route path="*" component={Error} />
             </Switch>
+            <FooterNav />
             <Footer />
           </div>
         </BrowserRouter>

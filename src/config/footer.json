@@ -1,0 +1,314 @@
+{
+  "data": [
+    {
+      "dd": [
+        {
+          "title": "用户帮助",
+          "children": [
+            {
+              "title": "申请退款",
+              "url": "/loading"
+            },
+            {
+              "title": "查看美团券密码",
+              "url": "/loading"
+            },
+            {
+              "title": "常见问题",
+              "url": "/loading"
+            },
+            {
+              "title": "用户协议",
+              "url": "/loading"
+            },
+            {
+              "title": "隐私政策",
+              "url": "/loading"
+            },
+            {
+              "title": "反诈骗公告",
+              "url": "/loading"
+            },
+            {
+              "title": "消费者权益保障",
+              "url": "/loading"
+            }
+          ]
+        },
+        {
+          "title": "美团服务",
+          "children": [
+            {
+              "title": "美团外卖",
+              "url": "/loading"
+            },
+            {
+              "title": "美团酒店",
+              "url": "/loading"
+            },
+            {
+              "title": "猫眼电影",
+              "url": "/loading"
+            },
+            {
+              "title": "美团配送",
+              "url": "/loading"
+            },
+            {
+              "title": "美团云",
+              "url": "/loading"
+            },
+            {
+              "title": "大众点评",
+              "url": "/loading"
+            },
+            {
+              "title": "美团民宿",
+              "url": "/loading"
+            },
+            {
+              "title": "无人配送",
+              "url": "/loading"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dd": [
+        {
+          "title": "商家合作",
+          "children": [
+            {
+              "title": "美团餐饮商户中心",
+              "url": "/loading"
+            },
+            {
+              "title": "美食商家入驻(非外卖)",
+              "url": "/loading"
+            },
+            {
+              "title": "美团外卖开店申请",
+              "url": "/loading"
+            },
+            {
+              "title": "美团收银官网",
+              "url": "/loading"
+            },
+            {
+              "title": "外卖配送加盟申请",
+              "url": "/loading"
+            },
+            {
+              "title": "美团点评餐饮学院",
+              "url": "/loading"
+            },
+            {
+              "title": "酒店商家入驻",
+              "url": "/loading"
+            },
+            {
+              "title": "境内度假商家入驻",
+              "url": "/loading"
+            },
+            {
+              "title": "综合商家入驻",
+              "url": "/loading"
+            },
+            {
+              "title": "美团民宿房东商家入驻",
+              "url": "/loading"
+            },
+            {
+              "title": "商家开票申请",
+              "url": "/loading"
+            },
+            {
+              "title": "美团点评智能收银机",
+              "url": "/loading"
+            },
+            {
+              "title": "美团点评餐饮开放平台",
+              "url": "/loading"
+            },
+            {
+              "title": "美团点评收单",
+              "url": "/loading"
+            },
+            {
+              "title": "免费使用美团排队",
+              "url": "/loading"
+            },
+            {
+              "title": "快驴进货商家合作",
+              "url": "/loading"
+            },
+            {
+              "title": "美团闪购商家入驻",
+              "url": "/loading"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dd": [
+        {
+          "title": "代理商加盟",
+          "children": [
+            {
+              "title": "美团外卖代理商招募",
+              "url": "/loading"
+            },
+            {
+              "title": "到店餐饮代理商招募",
+              "url": "/loading"
+            },
+            {
+              "title": "非餐饮代理商招募",
+              "url": "/loading"
+            },
+            {
+              "title": "美团联盟",
+              "url": "/loading"
+            },
+            {
+              "title": "美团收银招募线上分销商",
+              "url": "/loading"
+            },
+            {
+              "title": "美团点评5S服务商招募",
+              "url": "/loading"
+            },
+            {
+              "title": "美团收单渠道代理商招募",
+              "url": "/loading"
+            }
+          ]
+        },
+        {
+          "title": "美团规则",
+          "children": [
+            {
+              "title": "规则中心",
+              "url": "/loading"
+            },
+            {
+              "title": "规则目录",
+              "url": "/loading"
+            },
+            {
+              "title": "规则评议院",
+              "url": "/loading"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dd": [
+        {
+          "title": "关注美团",
+          "children": [
+            {
+              "title": "美团新浪微博",
+              "url": "/loading"
+            }
+          ]
+        },
+        {
+          "title": "公司信息",
+          "children": [
+            {
+              "title": "关于我们",
+              "url": "/loading"
+            },
+            {
+              "title": "投资者关系",
+              "url": "/loading"
+            },
+            {
+              "title": "加入我们",
+              "url": "/loading"
+            },
+            {
+              "title": "保险经纪资质",
+              "url": "/loading"
+            }
+          ]
+        },
+        {
+          "title": "廉正举报",
+          "children": [
+            {
+              "title": "廉政邮箱",
+              "url": "/loading"
+            }
+          ]
+        },
+        {
+          "title": "知识产权",
+          "children": [
+            {
+              "title": "知识产权维权平台",
+              "url": "/loading"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dd": [
+        {
+          "title": "消费者服务热线",
+          "children": [
+            {
+              "title": "外卖消费者：10109777",
+              "url": "/loading"
+            },
+            {
+              "title": "猫眼消费者：10105335",
+              "url": "/loading"
+            },
+            {
+              "title": "其他消费者：10107888",
+              "url": "/loading"
+            }
+          ]
+        },
+        {
+          "title": "商家服务热线",
+          "children": [
+            {
+              "title": "外卖&餐饮商家：10105557",
+              "url": "/loading"
+            },
+            {
+              "title": "休闲娱乐、丽人、ktv、教育、结婚、亲子、家装等商家：10100107",
+              "url": "/loading"
+            }
+          ]
+        },
+        {
+          "title": "投诉举报热线",
+          "children": [
+            {
+              "title": "违法和不良信息举报电话：4006018900",
+              "url": "/loading"
+            },
+            {
+              "title": "举报邮箱：tousujubao@meituan.com",
+              "url": "/loading"
+            }
+          ]
+        },
+        {
+          "title": "商家自助入驻美团入口"
+        },
+        {
+          "title": "供应商注册入口"
+        }
+      ]
+    }
+  ]
+}
