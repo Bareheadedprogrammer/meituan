@@ -31,10 +31,7 @@ class Content extends PureComponent {
     }
     const data = await axios({
       method: "get",
-      url: `/ptapi/suggest?keyword=${this.state.key}`,
-      data: {
-        keyword: this.state.key
-      }
+      url: `/ptapi/suggest?keyword=${this.state.key}`
     });
     if (data.data.data) {
       this.setState({

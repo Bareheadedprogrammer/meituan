@@ -7,4 +7,10 @@ module.exports = function(app) {
       changeOrigin: true
     })
   );
+  app.use(
+    proxy("/reptile", {
+      target: "http://localhost:4000/", //跨域地址
+      changeOrigin: true
+    })
+  );
 };
