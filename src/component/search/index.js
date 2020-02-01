@@ -1,12 +1,15 @@
 import React, { PureComponent } from "react";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import "./index.less";
 
 class Home extends PureComponent {
 
   constructor(props){
     super(props);
-    this.searchEveryThing = this.searchEveryThing.bind();
+    this.state={
+      msg: ""
+    }
   }
 
   async searchEveryThing(e){
@@ -14,11 +17,28 @@ class Home extends PureComponent {
       method: "get",
       url: `/reptile/home?keyword=${e}`
     });
+    this.setState({
+      msg: data.data
+    })
   }
 
   render() {
     this.searchEveryThing(this.props.match.params.content)
-    return <div>搜索</div>;
+    return(
+      <div id="react">
+        <div className="list-container">
+          <div className="crumb">
+            <Link to="/" className="crumb-item">美团首页</Link>
+            <h1 className="crumb-item">
+              {
+                this.props.match.params.content
+              }
+            </h1>
+          </div>
+            <h1>{this.state.msg}</h1>
+        </div>
+      </div>
+    )
   }
 }
 
