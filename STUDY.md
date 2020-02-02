@@ -118,3 +118,16 @@ historyArr: JSON.parse(localStorage.getItem("meituan_search")) || []
 ```
 
 坑: 由于点击历史记录不能继续存储,只有新点击的才能存储
+
+## 错误页面路由搭建
+
+使用switch让路由只选择一个,把错误页面的路由放在最后面即可
+
+```js
+<Switch>
+    <Route exact path="/" component={Home} />
+    <Route path="/login" component={Login} />
+    <Route path="/s/:content" component={Search}></Route>
+    <Route path="*" component={Error} />
+</Switch>
+```
