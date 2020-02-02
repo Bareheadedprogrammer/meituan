@@ -3,11 +3,9 @@ import "./index.less";
 
 class Home extends PureComponent {
   render() {
-    return (
-      <div className="scenes-container">
-          
-      </div>
-    );
+    return <div className="scenes-container">
+
+    </div>;
   }
 }
 

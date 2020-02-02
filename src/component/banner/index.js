@@ -40,7 +40,7 @@ class Home extends PureComponent {
   componentDidMount() {
     this.timer = setInterval(() => {
       this.setState({
-        showItem: this.state.showItem >= 5 ? 0 : this.state.showItem + 1
+        showItem: this.state.showItem >= 4 ? 0 : this.state.showItem + 1
       });
     }, 5000);
   }
