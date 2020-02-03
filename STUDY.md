@@ -164,3 +164,43 @@ server {
 
 }
 ```
+
+## 使用immutable数组
+
+在reducer中,不引入redux,而是改为redux-immutable
+
+```js
+import { combineReducers } from 'redux-immutable';
+```
+
+在每个reducer中,数组全部使用fromJS()函数
+
+```js
+import { fromJS } from 'immutable';
+
+const defaultData = fromJS({
+    error_message: "错误信息:服务器找不到请求的网页"
+})
+
+export default ( state = defaultData, action ) =>{
+    switch(action.type){
+        default: 
+            return state;
+    }
+}
+```
+
+immutable常用API
+
+1. fromJS会把js对象转为Map,数组转为List
+    * immutable.fromJS([1,2,3,4,5])    //将原生array  --> List
+    * immutable.fromJS({name:'danny', age:18})   //将原生object  --> Map
+2. toJS() 会把immutable转为js
+3. var data1 = immutableData.get('a') //  data1 = 1  
+4. var data2 = immutableData.getIn(['c', 'd']) // data2 = 3   getIn用于深层结构访问
+5. var data3 = immutableData.set('a' , 2);   // data3中的 a = 2
+6. var data4 = immutableData.setIn(['c', 'd'], 4);   //data4中的 d = 4
+7. var data5 = immutableData.update('a',function(x){return x+4})   //data5中的 a = 5
+8. var data6 = immutableData.updateIn(['c', 'd'],function(x){return x+4})   //data6中的 d = 7
+9. var data7 = immutableData.delete('a')   //data7中的 a 不存在
+10. var data8 = immutableData.deleteIn(['c', 'd'])   //data8中的 d 不存在

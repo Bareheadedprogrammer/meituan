@@ -14,22 +14,41 @@ class Home extends PureComponent {
     };
   }
 
+  componentDidMount = ()=> {
+    this.props.getData("all");
+  }
+
   mouseEnterEvent(data, url, have) {
-    this.setState({
-      item: data,
-      url
-    });
-    let flag = false;
-    have.map(i => {
-      flag = i === this.state.url;
-      console.log(i, this.state.url);
-    });
-    console.log(!flag);
-    !flag || this.props.getData(url, have);
+    this.setState(
+      {
+        item: data,
+        url
+      },
+      () => {
+        let flag = false;
+        have.map(i => {
+          flag = i === this.state.url;
+        });
+        flag || this.props.getData(url, have);
+      }
+    );
   }
 
   render() {
     const { list, have } = this.props;
+    let defaultList = list.toJS();
+    let shuzu = null;
+    if (defaultList.length === 0) {
+      shuzu = [];
+    } else {
+      shuzu = defaultList[0].data;
+    }
+    for (let i = 0; i < defaultList.length; i++) {
+      if (defaultList[i].url === this.state.url) {
+        shuzu = defaultList[i].data;
+      }
+    }
+    console.log(shuzu);
     return (
       <div className="scenes-container">
         <div className="quality-container">
@@ -55,53 +74,43 @@ class Home extends PureComponent {
             </ul>
           </div>
           <div className="quality-area clearfix">
-            {list
-              .get(0)
-              .get("data")
-              .map(item => {
-                return (
-                  <Link
-                    key={item.get("id")}
-                    to="/loading"
-                    className="link quality-card"
-                  >
-                    <div className="quality-img">
-                      <img src={item.get("imgUrl")} alt={item.get("iUrl")} />
+            {shuzu.map((item, index) => {
+              return (
+                <Link key={item.id} to="/loading" className="link quality-card">
+                  <div className="quality-img">
+                    <img src={item.imgUrl} alt={item.iUrl} />
+                  </div>
+                  <div className="poi-info">
+                    <div className="title" title={item.title}>
+                      {item.title}
                     </div>
-                    <div className="poi-info">
-                      <div className="title" title={item.get("title")}>
-                        {item.get("title")}
-                      </div>
-                      <div className="sub-title" title={item.get("subTitle")}>
-                        {item.get("subTitle")}
-                      </div>
-                      <div className="price-info">
-                        <span className="current-price-wrapper">
-                          <span className="price-symbol numfont">¥</span>
-                          <span
-                            className="current-price numfont"
-                            title={item.get("currentPrice")}
-                          >
-                            {item.get("currentPrice")}
-                          </span>
-                        </span>
-                        <span
-                          className="old-price"
-                          title={item.get("oldPrice")}
-                        >
-                          {item.get("oldPrice")}
-                        </span>
-                        <span
-                          className="sold bottom-right-info"
-                          title={item.get("bottomInfo")}
-                        >
-                          {item.get("bottomInfo")}
-                        </span>
-                      </div>
+                    <div className="sub-title" title={item.subTitle}>
+                      {item.subTitle}
                     </div>
-                  </Link>
-                );
-              })}
+                    <div className="price-info">
+                      <span className="current-price-wrapper">
+                        <span className="price-symbol numfont">¥</span>
+                        <span
+                          className="current-price numfont"
+                          title={item.currentPrice}
+                        >
+                          {item.currentPrice}
+                        </span>
+                      </span>
+                      <span className="old-price" title={item.oldPrice}>
+                        {item.oldPrice}
+                      </span>
+                      <span
+                        className="sold bottom-right-info"
+                        title={item.bottomInfo}
+                      >
+                        {item.bottomInfo}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
