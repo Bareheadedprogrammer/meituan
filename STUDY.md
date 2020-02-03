@@ -97,6 +97,15 @@ module.exports = function(app) {
 };
 ```
 
+在axios里面这样
+
+```js
+const data = await axios({
+    method: "get",
+    url: `/ptapi/suggest?keyword=${this.state.key}`
+});
+```
+
 设置之后需要重新启动项目才能生效
 
 > 坑: 在package.json中设置proxy新版本只能设置字符串
@@ -130,4 +139,28 @@ historyArr: JSON.parse(localStorage.getItem("meituan_search")) || []
     <Route path="/s/:content" component={Search}></Route>
     <Route path="*" component={Error} />
 </Switch>
+```
+
+## 服务器做代理
+
+```conf
+# 美团项目
+server {
+    listen       3002;
+
+    server_name  shtodream.cn;
+    location / {
+        root   html/meituan/build;
+        index  index.html index.htm;
+    }
+
+    location /ptapi {
+        proxy_pass https://www.meituan.com;
+    }
+
+    location /reptile {
+        proxy_pass http://shtodream.cn:4000/;
+    }
+
+}
 ```

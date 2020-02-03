@@ -1,0 +1,20 @@
+{
+    "data":[
+        {
+            "title":"全部",
+            "url": "all"
+        },
+        {
+            "title": "约会聚餐",
+            "url": "feast"
+        },
+        {
+            "title": "丽人SPA",
+            "url": "spa"
+        },
+        {
+            "title": "品质出游",
+            "url": "journey"
+        }
+    ]
+}
