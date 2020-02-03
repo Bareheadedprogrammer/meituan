@@ -1,0 +1,183 @@
+.scenes-container {
+  width: 1190px;
+  margin: 40px auto;
+  .quality-container {
+    margin: 40px auto;
+    .index-nav-container {
+      width: 100%;
+      height: 44px;
+      line-height: 44px;
+      box-sizing: border-box;
+      font-size: 14px;
+      color: #fff;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      .nav-item {
+        float: left;
+        padding: 0 5px;
+        position: relative;
+        cursor: pointer;
+        text-transform: uppercase;
+        &.active:after {
+          position: absolute;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-bottom: 7px solid #fff;
+          content: " ";
+          display: block;
+          width: 2px;
+          height: 0;
+          top: 37px;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+      .title {
+        font-size: 18px;
+        margin-left: 13px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.recommend-list {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-top: 0;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  max-height: 758px;
+  padding: 10px 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  text-align: left;
+  .recommend-item {
+    display: inline-block;
+    width: 20%;
+    box-sizing: border-box;
+    vertical-align: middle;
+    .card-container {
+      padding: 10px;
+      .recommend-card-wrapper {
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .img-box {
+        height: 0;
+        width: 100%;
+        padding-bottom: 56.25%;
+        background-color: #f4f4f4;
+        background-size: cover;
+        background-position: 50% 50%;
+        border-radius: 4px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          font-size: 0;
+        }
+      }
+      .info-box {
+        .score-line div {
+          display: inline-block;
+        }
+        .score-line.aligned {
+          height: 24px;
+        }
+        .desc-line.aligned {
+          height: 18px;
+        }
+        .desc {
+          font-size: 12px;
+          color: #999999;
+          width: 100%;
+          height: 18px;
+          line-height: 18px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          margin-top: 4px;
+        }
+        .price-box {
+          color: #ff6600;
+          .yuan {
+            font-size: 14px;
+            font-weight: 700;
+          }
+          .price-number {
+            font-size: 22px;
+            letter-spacing: -0.5;
+          }
+          .price-desc {
+            font-size: 12px;
+            margin-left: 4px;
+            font-weight: 700;
+          }
+        }
+        .bottom-line.aligned {
+          height: 28px;
+        }
+        .bottom-line {
+          position: relative;
+        }
+        position: relative;
+        margin-top: 10px;
+        .title {
+          font-size: 14px;
+          color: #222222;
+          line-height: 20px;
+          width: 100%;
+          margin: 0;
+          font-weight: 500;
+          &.aligned {
+            font-size: 16px;
+            line-height: 22px;
+            width: 100%;
+            height: 22px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
+
+.rate-stars {
+  width: 84px;
+  height: 24px;
+  position: relative;
+  display: inline-block;
+}
+
+.rate-stars-dark {
+  color: #c3c3c3;
+}
+.rate-stars-ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin: 3px 0;
+  white-space: nowrap;
+  > li {
+    display: inline-block;
+    padding: 0px 2px;
+  }
+}
+.rate-stars-light {
+  color: #ff9900;
+  position: absolute;
+  top: 0px;
+  overflow: hidden;
+}
+
+.comment-number {
+  font-size: 12px;
+  color: #999;
+  height: 24px;
+  line-height: 24px;
+  margin-left: 10px;
+}

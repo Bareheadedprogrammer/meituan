@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import Banner from "../left-banner";
 import Scenes from '../scenes';
+import Offer from '../offer';
+import Recommend from '../recommend';
 import "./index.less";
 
 class Home extends PureComponent {
@@ -10,6 +12,8 @@ class Home extends PureComponent {
         <div className="index-container">
           <Banner />
           <Scenes />
+          <Offer />
+          <Recommend />
         </div>
       </div>
     );

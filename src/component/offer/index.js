@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
-import data from "../../config/scenes.json";
+import data from "../../config/offer.json";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getHomeData } from "../store/createAction";
+import { getCheapHomeData } from "../store/createAction";
 import "./index.less";
 
 class Home extends PureComponent {
@@ -56,9 +56,16 @@ class Home extends PureComponent {
     return (
       <div className="scenes-container">
         <div className="quality-container">
-          <div className="index-nav-container undefined">
+          <div
+            className="index-nav-container undefined"
+            style={{
+              backgroundColor: "rgb(190, 164, 116)",
+              backgroundImage:
+                "linear-gradient(to right, rgb(255, 113, 74) 2%, rgb(252, 66, 66) 97%)"
+            }}
+          >
             <ul className="clearfix ">
-              <li className="title nav-item mf-shang-hei-regular">有格调</li>
+              <li className="title nav-item mf-shang-hei-regular">狠优惠</li>
               {data.data.map((item, index) => {
                 return (
                   <li
@@ -77,33 +84,20 @@ class Home extends PureComponent {
               })}
             </ul>
           </div>
-          <div className="quality-area clearfix">
+          <div className="cheap-area clearfix">
             {shuzu.map((item, index) => {
               return (
-                <Link key={item.id} to="/loading" className="link quality-card">
-                  <div className="quality-img">
+                <Link key={item.id} to="/loading" className="link cheap-card">
+                  <div className="cheap-img">
                     <img src={item.imgUrl} alt={item.iUrl} />
                   </div>
                   <div className="poi-info">
                     <div className="title" title={item.title}>
                       {item.title}
                     </div>
-                    {item.subTitle && (
-                      <div className="sub-title" title={item.subTitle}>
-                        {item.subTitle}
-                      </div>
-                    )}
-                    {item.tags && (
-                      <div className="tags-wrapper clearfix">
-                        {item.tags.map((x, ss) => {
-                          return (
-                            <div className="tag" key={ss}>
-                              {x.tag}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    )}
+                    <div className="sub-title" title={item.subTitle}>
+                      {item.subTitle}
+                    </div>
                     <div className="price-info">
                       <span className="current-price-wrapper">
                         <span className="price-symbol numfont">¥</span>
@@ -137,15 +131,15 @@ class Home extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    list: state.get("Home").get("data"),
-    have: state.get("Home").get("have")
+    list: state.get("Home").get("cheap"),
+    have: state.get("Home").get("cheapHave")
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getData(data) {
-      dispatch(getHomeData(data));
+      dispatch(getCheapHomeData(data));
     }
   };
 };

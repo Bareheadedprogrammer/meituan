@@ -1,0 +1,16 @@
+{
+    "data":[
+        {
+            "title":"全部",
+            "url": "all"
+        },
+        {
+            "title": "美食",
+            "url": "food"
+        },
+        {
+            "title": "休闲",
+            "url": "xiuyu"
+        }
+    ]
+}
