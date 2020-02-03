@@ -10,26 +10,31 @@ class Home extends PureComponent {
     super(props);
     this.state = {
       item: 0,
-      url: "all"
+      url: "all",
+      fangwen: []
     };
   }
 
-  componentDidMount = ()=> {
+  componentDidMount = () => {
     this.props.getData("all");
-  }
+  };
 
   mouseEnterEvent(data, url, have) {
     this.setState(
       {
         item: data,
-        url
+        url,
+        fangwen: have.toJS()
       },
       () => {
-        let flag = false;
-        have.map(i => {
-          flag = i === this.state.url;
-        });
-        flag || this.props.getData(url, have);
+        const jia = this.state.fangwen;
+        let flag = 0;
+        for (let i = 0; i < jia.length; i++) {
+          jia[i] === url && flag++;
+        }
+        if (flag === 0) {
+          this.props.getData(url, have);
+        }
       }
     );
   }

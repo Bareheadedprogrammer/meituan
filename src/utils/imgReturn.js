@@ -15,6 +15,7 @@ export default function(data) {
   const prev = "http://p0.meituan.net/";
   const next = "@460w_260h_1e_1c";
   data.data.forEach(v => {
+    // eslint-disable-next-line no-useless-escape
     var bbb = v.imgUrl.replace(/.*\/([^\/]+\/[^\/]+)$/, '$1');
     const tu = bbb.replace(/(.*\.[png|jpg]{3}).*/,"$1");
     v.imgUrl = prev + tu + next
