@@ -7,7 +7,9 @@ import "./index.less";
 
 class Home extends PureComponent {
   componentDidMount = () => {
-    this.props.getData("all");
+    if (this.props.list.size === 0) {
+      this.props.getData("all");
+    }
   };
 
   render() {
@@ -77,7 +79,10 @@ class Home extends PureComponent {
                                   <span className="icon-star_full iconfont"></span>
                                 </li>
                               </ul>
-                              <ul className="rate-stars-ul rate-stars-light" style={{width: item.score*20+"%"}}>
+                              <ul
+                                className="rate-stars-ul rate-stars-light"
+                                style={{ width: item.score * 20 + "%" }}
+                              >
                                 <li>
                                   <span className="icon-star_full iconfont"></span>
                                 </li>

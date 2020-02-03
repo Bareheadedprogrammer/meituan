@@ -16,7 +16,9 @@ class Home extends PureComponent {
   }
 
   componentDidMount = () => {
-    this.props.getData("all");
+    if(this.props.list.size===0){
+      this.props.getData("all");
+    }
   };
 
   mouseEnterEvent(data, url, have) {
