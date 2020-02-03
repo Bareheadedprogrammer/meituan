@@ -1,0 +1,108 @@
+.slider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  .slider-content {
+    position: relative;
+    height: 100%;
+    transition: left 0.5s;
+    transition-timing-function: ease-out;
+    margin: 0px 12px;
+    width: 10000000px;
+    .slider-item-film {
+      height: 297px;
+      width: 214px;
+      float: left;
+      margin-right: 19px;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      position: relative;
+      .film-img {
+        border-radius: 4px;
+        height: 297px;
+        width: 214px;
+        border: 0px;
+      }
+      .film-mark {
+        position: absolute;
+        top: 10px;
+        z-index: 99;
+        left: -6px;
+        height: 20px;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+        width: auto;
+        border: 0px;
+      }
+      .film-info {
+        height: 100px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        background-image: linear-gradient(
+          -180deg,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(29, 45, 55, 0.8) 99%
+        );
+        .film-score {
+          font-size: 12px;
+          color: #fff;
+          text-align: left;
+          margin-top: 40px;
+          padding-left: 10px;
+          font-weight: 500;
+          span {
+            font-size: 16px;
+            color: #fd9827;
+            font-weight: 500;
+          }
+        }
+        .film-name {
+          text-align: left;
+          color: #fff;
+          padding-left: 10px;
+          font-size: 16px;
+          white-space: nowrap;
+          width: 6em;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-weight: 500;
+        }
+        .buy-ticket {
+          background: #ff4949;
+          border-radius: 100px;
+          color: #fff;
+          padding: 2px 12px 3px 12px;
+          font-size: 14px;
+          position: relative;
+          top: -24px;
+          cursor: pointer;
+          line-height: 20px;
+          text-align: center;
+          float: right;
+          right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.scenes-body {
+  background: #fff;
+  padding: 20px 10px;
+  border: 1px solid #e5e5e5;
+  border-top: 0px;
+  position: relative;
+}
+
+p{
+    margin-bottom: 0;
+}
+
+.slider .btn span {
+    top: 5px;
+    font-size: 20px!important;
+}

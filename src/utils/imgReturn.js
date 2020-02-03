@@ -11,14 +11,30 @@ http://p0.meituan.net/dpmerchantpic/894a230555aedd63c423a454b48e5842180576.jpg%4
 2. 继续匹配以.jpg或者.png前面的内容
 3. http://p0.meituan.net/ + 我们得到的字符串 + @460w_260h_1e_1c
 */
-export default function(data) {
+export const imgReturn = data => {
   const prev = "http://p0.meituan.net/";
   const next = "@460w_260h_1e_1c";
   data.data.forEach(v => {
     // eslint-disable-next-line no-useless-escape
-    var bbb = v.imgUrl.replace(/.*\/([^\/]+\/[^\/]+)$/, '$1');
-    const tu = bbb.replace(/(.*\.[png|jpg]{3}).*/,"$1");
-    v.imgUrl = prev + tu + next
+    var bbb = v.imgUrl.replace(/.*\/([^\/]+\/[^\/]+)$/, "$1");
+    const tu = bbb.replace(/(.*\.[png|jpg]{3}).*/, "$1");
+    v.imgUrl = prev + tu + next;
   });
   return data;
-}
+};
+
+export const getFilmDatas = (data, pytho) => {
+  const prev = "http://p1.meituan.net/";
+  const next = "@267w_371h_1e_1c"; //电影后缀必须使用这个
+  let flag = "hot";
+  if (pytho === "getComingFilms") {
+    flag = "coming";
+  }
+  data[flag].forEach(v => {
+    // eslint-disable-next-line no-useless-escape
+    var bbb = v.img.replace(/.*\/([^\/]+\/[^\/]+)$/, "$1");
+    const tu = bbb.replace(/(.*\.[png|jpg]{3}).*/, "$1");
+    v.img = prev + tu + next;
+  });
+  return data;
+};

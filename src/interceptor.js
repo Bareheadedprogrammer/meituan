@@ -9,9 +9,8 @@ import { Toast } from "antd-mobile";
 
 //拦截请求
 axios.interceptors.request.use(function(config) {
-  const searchReg = /^ptapi/;
   //  不拦截搜索内容
-  if (searchReg.test(config.url)) {
+  if(config.url && config.url.indexOf("suggest") === -1){
     Toast.loading("加载中", 0);
   }
   return config;

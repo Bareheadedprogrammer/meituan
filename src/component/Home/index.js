@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import Banner from "../left-banner";
 import Scenes from '../scenes';
 import Offer from '../offer';
+import Film from '../Films';
 import Recommend from '../recommend';
 import "./index.less";
 
@@ -13,6 +14,7 @@ class Home extends PureComponent {
           <Banner />
           <Scenes />
           <Offer />
+          <Film />
           <Recommend />
         </div>
       </div>

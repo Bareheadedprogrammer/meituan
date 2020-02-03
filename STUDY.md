@@ -234,3 +234,50 @@ export default function(data) {
   return data;
 }
 ```
+
+## 自定义axios拦截器
+
+在src下面创建interceptor
+
+```js
+import axios from "axios";
+import { Toast } from "antd-mobile";
+// const codeMessage = {
+//   202: "一个请求已经进入后台排队（异步任务）。",
+//   401: "用户没有权限（令牌、用户名、密码错误）。",
+//   404: "发出的请求针对的是不存在的记录，服务器没有进行操作。",
+//   500: "服务器发生错误，请检查服务器。"
+// };
+
+//拦截请求
+axios.interceptors.request.use(function(config) {
+  const searchReg = /^ptapi/;
+  //  不拦截搜索内容
+  if (searchReg.test(config.url)) {
+    Toast.loading("加载中", 0);
+  }
+  return config;
+});
+
+//拦截响应
+axios.interceptors.response.use(function(config) {
+  Toast.hide();
+  return config;
+});
+```
+
+在每次发出和接受请求之前都可以做一些事情,这里面我使用了antd-mobile的Toast
+
+> 注意: 如果想要某些请求不被拦截,可以先在interceptor中判断,再return
+
+最后在index.js中引入即可
+
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.less';
+import "./interceptor.js";
+import App from './route';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
