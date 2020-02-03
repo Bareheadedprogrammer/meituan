@@ -48,7 +48,6 @@ class Home extends PureComponent {
         shuzu = defaultList[i].data;
       }
     }
-    console.log(shuzu);
     return (
       <div className="scenes-container">
         <div className="quality-container">

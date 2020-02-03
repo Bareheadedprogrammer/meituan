@@ -204,3 +204,33 @@ immutable常用API
 8. var data6 = immutableData.updateIn(['c', 'd'],function(x){return x+4})   //data6中的 d = 7
 9. var data7 = immutableData.delete('a')   //data7中的 a 不存在
 10. var data8 = immutableData.deleteIn(['c', 'd'])   //data8中的 d 不存在
+
+## 使用正则解决美团图片加密
+
+在每次派发action之后,我们对图片进行处理,再给reducer
+
+```js
+// 解密美团图片
+/* 
+加密后 
+1. http://p0.meituan.net/dpmerchantpic/894a230555aedd63c423a454b48e5842180576.jpg%40240w_180h_1e_1c_1l%7Cwatermark%3D1%26%26r%3D2%26p%3D9%26x%3D2%26y%3D2%26relative%3D1%26o%3D20@460w_260h_1e_1c
+2. https://img.meituan.net/w.h/msmerchant/3ef69a0c07ea97d666dccdd68f0c0abb485331.jpg
+ 
+正常的
+http://p0.meituan.net/dpmerchantpic/894a230555aedd63c423a454b48e5842180576.jpg%40240w_180h_1e_1c
+分析 加密分了很多种,那么我们的思路是分为三步
+1. 匹配倒数第二个字符串后面的内容
+2. 继续匹配以.jpg或者.png前面的内容
+3. http://p0.meituan.net/ + 我们得到的字符串 + @460w_260h_1e_1c
+*/
+export default function(data) {
+  const prev = "http://p0.meituan.net/";
+  const next = "@460w_260h_1e_1c";
+  data.data.forEach(v => {
+    var bbb = v.imgUrl.replace(/.*\/([^\/]+\/[^\/]+)$/, '$1');
+    const tu = bbb.replace(/(.*\.[png|jpg]{3}).*/,"$1");
+    v.imgUrl = prev + tu + next
+  });
+  return data;
+}
+```
