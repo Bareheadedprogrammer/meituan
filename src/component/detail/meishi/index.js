@@ -1,25 +1,68 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { getMeiShi } from "../store/createAction";
-import { Link } from "react-router-dom";
 import "./index.less";
 import format from "../../../utils/dateChuli";
+import { notification, Icon } from "antd";
+import Tail from "../tail";
+import Right from "../right";
 
 class index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sort: "default" // default代表质量排序, limit代表时间排序
+    };
+  }
+
   componentDidMount() {
     this.props.getDefaultData(this.props.match.params.id);
   }
 
   getDoubleData = () => {
     this.props.getDefaultData(this.props.match.params.id);
+  };
+
+  clickDoubleSort(sort) {
+    this.setState({
+      sort
+    });
   }
+
+  // 点赞
+  addLike = () => {
+    notification.open({
+      message: "请先登录",
+      description: "亲,由于你没有登录,我们无法信息的可靠性,请登录之后再点赞哦",
+      icon: <Icon type="smile" style={{ color: "#108ee9" }} />
+    });
+  };
 
   render() {
     const { like, tags, comments, isLogin, total } = this.props;
     const likes = like.toJS();
+    // 根据质量或时间进行排序
+    if (comments && comments.length > 0) {
+      let pai = null;
+      if (this.state.sort === "limit") {
+        pai = "commentTime";
+      } else {
+        pai = "readCnt";
+      }
+      for (let i = 0; i < comments.length - 1; i++) {
+        for (let j = 0; j < comments.length - 1; j++) {
+          if (comments[j + 1][pai] > comments[j][pai]) {
+            let obj = comments[j];
+            comments[j] = comments[j + 1];
+            comments[j + 1] = obj;
+          }
+        }
+      }
+    }
     return (
       <Fragment>
         <div className="content">
+          <Tail />
           <div className="btm-cont clear">
             <div className="btm-left">
               <div>
@@ -40,8 +83,18 @@ class index extends Component {
               <div className="comment">
                 <div className="total">
                   <div className="sort">
-                    <span className="on">质量排序</span>
-                    <span>时间排序</span>
+                    <span
+                      onClick={() => this.clickDoubleSort("default")}
+                      className={this.state.sort === "default" ? "on" : ""}
+                    >
+                      质量排序
+                    </span>
+                    <span
+                      onClick={() => this.clickDoubleSort("limit")}
+                      className={this.state.sort === "limit" ? "on" : ""}
+                    >
+                      时间排序
+                    </span>
                   </div>
                   {total}条网友点评
                 </div>
@@ -96,7 +149,10 @@ class index extends Component {
                                       <i className="iconfont icon-star_full"></i>
                                     </li>
                                   </ul>
-                                  <ul className="stars-ul stars-light" style={{width: v.star*2+"%"}}>
+                                  <ul
+                                    className="stars-ul stars-light"
+                                    style={{ width: v.star * 2 + "%" }}
+                                  >
                                     <li>
                                       <i className="iconfont icon-star_full"></i>
                                     </li>
@@ -150,7 +206,7 @@ class index extends Component {
                                 </div>
                               )}
                               <div className="like-cont">
-                                <div className="like">
+                                <div className="like" onClick={this.addLike}>
                                   <b></b>
                                   <span>赞</span>
                                 </div>
@@ -164,34 +220,7 @@ class index extends Component {
                 </div>
               </div>
             </div>
-            <div className="btm-right">
-              <div className="guess-you-like">
-                <h4>猜你喜欢</h4>
-                <ul>
-                  {likes[0].data.map((v, i) => {
-                    return (
-                      <li key={i}>
-                        <Link to={{ pathname: `${v.itemId}` }}
-                            onClick={ this.getDoubleData }
-                        >
-                          <div className="pic">
-                            <div className="imgbox">
-                              <img src={v.imgUrl} alt={v.title} />
-                            </div>
-                          </div>
-                          <p className="name">{v.title}</p>
-                          <p className="desc">{v.areaName}</p>
-                          <p className="price">
-                            <b>￥</b>
-                            {v.lowPrice}
-                          </p>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </div>
+            <Right likes={likes} getDoubleData={this.getDoubleData} />
           </div>
         </div>
       </Fragment>

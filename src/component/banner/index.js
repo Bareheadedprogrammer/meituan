@@ -65,7 +65,7 @@ class Home extends PureComponent {
   render() {
     return (
       <Fragment>
-        <div className="slider-content clearfix">
+        <div className="slider-content clearfix" style={{ margin: 0 }}>
           {this.state.arr.map((item, index) => {
             return (
               <div
