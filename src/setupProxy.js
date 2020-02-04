@@ -19,4 +19,16 @@ module.exports = function(app) {
       changeOrigin: true
     })
   );
+  app.use(
+    proxy("/group", {
+      target: "https://ihotel.meituan.com", //酒店代理
+      changeOrigin: true
+    })
+  );
+  app.use(
+    proxy("/detailapi", {
+      target: "https://ihotel.meituan.com", //酒店代理
+      changeOrigin: true
+    })
+  );
 };

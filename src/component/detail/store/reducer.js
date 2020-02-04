@@ -1,12 +1,14 @@
 import { fromJS } from "immutable";
-import { GET_DATA, CATE_DATA } from "./constant";
+import { GET_DATA, CATE_DATA, JIU_CATE_DATA } from "./constant";
 const defaultState = fromJS({
   tags: [],
   comments: [],
   total: 0,
   totalCate: 0,
   tagsCate: [],
-  commentsCate: []
+  commentsCate: [],
+  jiuList: [],
+  jiuData: []
 });
 
 export default (state = defaultState, action) => {
@@ -21,6 +23,10 @@ export default (state = defaultState, action) => {
         .set("tagsCate", action.pyload.tags)
         .set("commentsCate", action.pyload.comments)
         .set("totalCate", action.pyload.total);
+    case JIU_CATE_DATA:
+      return state
+        .set("jiuList", action.pyload.list.data.data)
+        .set("jiuData", action.pyload.data.data.data);
     default:
       return state;
   }

@@ -40,3 +40,16 @@ export const getFilmDatas = (data, pytho) => {
   });
   return data;
 };
+
+export const imgReturnOne = (url, type) => {
+  const prev = "https://p1.meituan.net/175.0/tdchotel/";
+  // type等于1 代表酒店图片解密形式
+  switch (type) {
+    case 1:
+      // eslint-disable-next-line no-useless-escape
+      const dataUrl = prev + url.replace(/.*\/([^\/]+)$/, "$1");
+      return dataUrl;
+    default:
+      return null;
+  }
+};
