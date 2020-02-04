@@ -1,0 +1,15 @@
+  
+language: node_js
+node_js:
+  - lts/*
+before_install:
+  - npm install -g create-react-app
+install:
+  - yarn
+script:
+  - yarn build
+notifications:
+  email:
+    - 2662419405@qq.com
+  on_success: change
+  on_failure: always

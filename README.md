@@ -1,6 +1,11 @@
+<div align="center">
+  
 # react-美团
 
-> 基于React学习和制作一个美团官网
+</div>
+
+> **说明** <br/>
+> 自己为何要去尝试写一个这么多页面的网页:100:,本人是纯粹的小白一枚,在各大论坛不停的刷着Vue,React,RN,微信小程序等方面的教程,虽然不停的学习,但是发现自己的技术并没有实质上的提高,就是不停的重复着同样的任务,每个地方都学到了一点,只要混合在一起,马上就全都不会了,:tada:所以第一次尝试使用最新的技术去制作一个大型网站---->至于为何选择了美团,主要是每次看的教程都是做**饿了么**,这次就打算做一个和饿了么类似的美团,数据的话用了美团官网的一部分API,自己写了一部分
 
 ## 完成
 
@@ -48,3 +53,31 @@ npm run start
 ```
 
 默认启动在3001端口上
+
+> 如果想要build之后可以访问,需要加上代理,推荐使用nginx,
+
+```conf
+# 美团项目
+server {
+    listen       3000; // 这里面改成自己服务器端口即可
+
+    server_name  shtodream.cn;
+    location / {
+        root   html/meituan/build;
+        index  index.html index.htm;
+    }
+
+    location /ptapi {
+            proxy_pass https://www.meituan.com;
+    }
+
+    location /reptile {
+            proxy_pass http://shtodream.cn:4000/;
+    }
+
+    location /meishi {
+            proxy_pass https://www.meituan.com;
+    }
+
+}
+```
