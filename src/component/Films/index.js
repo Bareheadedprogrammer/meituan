@@ -110,7 +110,7 @@ class Home extends PureComponent {
                 {shuzu.map(item => {
                   return (
                     <div className="slider-item-film" key={item.id}>
-                      <Link to="/loading">
+                      <Link to={{ pathname: `/films/${item.id}` }}>
                         <img
                           src={item.img}
                           alt={item.nm}

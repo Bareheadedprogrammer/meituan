@@ -47,7 +47,7 @@ class Home extends PureComponent {
               return (
                 <Link
                   className="link link recommend-item"
-                  to="/loading"
+                  to={{ pathname: `meishi/${item.itemId}`}}
                   key={item.itemId}
                 >
                   <div className="card-container">

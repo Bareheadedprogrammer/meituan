@@ -87,9 +87,9 @@ class Home extends PureComponent {
             </ul>
           </div>
           <div className="cheap-area clearfix">
-            {shuzu.map((item, index) => {
+            {shuzu.map(item => {
               return (
-                <Link key={item.id} to="/loading" className="link cheap-card">
+                <Link key={item.id} to={item.iUrl} className="link cheap-card">
                   <div className="cheap-img">
                     <img src={item.imgUrl} alt={item.iUrl} />
                   </div>

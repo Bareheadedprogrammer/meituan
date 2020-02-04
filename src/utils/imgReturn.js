@@ -16,9 +16,11 @@ export const imgReturn = data => {
   const next = "@460w_260h_1e_1c";
   data.data.forEach(v => {
     // eslint-disable-next-line no-useless-escape
-    var bbb = v.imgUrl.replace(/.*\/([^\/]+\/[^\/]+)$/, "$1");
+    let bbb = v.imgUrl.replace(/.*\/([^\/]+\/[^\/]+)$/, "$1");
+    // eslint-disable-next-line no-useless-escape
     const tu = bbb.replace(/(.*\.[png|jpg]{3}).*/, "$1");
     v.imgUrl = prev + tu + next;
+    v.iUrl = v.iUrl && v.iUrl.substr(17);
   });
   return data;
 };

@@ -16,7 +16,7 @@ class Home extends PureComponent {
   }
 
   componentDidMount = () => {
-    if(this.props.list.size===0){
+    if (this.props.list.size === 0) {
       this.props.getData("all");
     }
   };
@@ -82,7 +82,12 @@ class Home extends PureComponent {
           <div className="quality-area clearfix">
             {shuzu.map((item, index) => {
               return (
-                <Link key={item.id} to="/loading" className="link quality-card">
+                <Link
+                  key={item.id}
+                  to={item.iUrl}
+                  className="link quality-card"
+                  demo={item}
+                >
                   <div className="quality-img">
                     <img src={item.imgUrl} alt={item.iUrl} />
                   </div>
