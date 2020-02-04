@@ -13,6 +13,30 @@
     }
     .btm-left {
       .comment {
+        .labels-box {
+          width: 100%;
+          margin-top: 20px;
+          li {
+            width: auto;
+            height: 22px;
+            display: inline-block;
+            padding: 7px 10px;
+            font-size: 14px;
+            color: #666666;
+            border: 1px solid #e5e5e5;
+            border-radius: 2px;
+            margin: 0 10px 10px 0;
+            cursor: pointer;
+            box-sizing: content-box;
+          }
+          .label-active {
+            height: 22px;
+            color: #222222;
+            font-weight: 500;
+            border: 1px solid #ffc700;
+            background-color: rgba(255, 150, 0, 0.04);
+          }
+        }
         .com-cont {
           .list {
             overflow: hidden;
@@ -30,10 +54,17 @@
               }
             }
             .info {
+              .deal-name {
+                height: 20px;
+                font-size: 12px;
+                color: #999999;
+                line-height: 20px;
+              }
               .reply {
-                font-size: 14px;
+                font-size: 12px;
                 color: #31bbac;
                 padding-top: 12px;
+                line-height: 1.6;
               }
               float: left;
               padding-left: 20px;
@@ -43,6 +74,12 @@
                 color: #222;
                 line-height: 22px;
                 margin-bottom: 1px;
+                .user-level {
+                  width: 16px;
+                  height: 16px;
+                  margin-left: 10px;
+                  vertical-align: middle;
+                }
               }
               .date {
                 font-size: 12px;
@@ -121,6 +158,9 @@
           .sea {
             margin-top: 22px;
             font-size: 14px;
+            .pianZuo {
+              margin-left: 20px;
+            }
             span {
               display: inline-block;
               line-height: 20px;
@@ -145,6 +185,11 @@
           .tags {
             padding-top: 15px;
             overflow: hidden;
+            .onSel {
+              background-color: #00c9b3;
+              border: 1px solid #00c9b3;
+              color: #fff;
+            }
             li {
               float: left;
               font-size: 16px;
@@ -471,6 +516,14 @@
       width: 100%;
       height: 100%;
       border-radius: 4px;
+    }
+  }
+}
+
+.cate {
+  .comment-sort {
+    .active {
+      color: #fe8c00;
     }
   }
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_DATA } from "./constant";
+import { GET_DATA, CATE_DATA } from "./constant";
 
 // 获取quality的数据
 export const getMeiShi = pytho => {
@@ -11,6 +11,20 @@ export const getMeiShi = pytho => {
     const arr = {
       type: GET_DATA,
       pyload: data.data.data
+    };
+    dispatch(arr);
+  };
+};
+
+export const getCateData = pytho => {
+  return async dispatch => {
+    const data = await axios({
+      method: "get",
+      url: `/ptapi/poi/getcomment?id=${pytho}&offset=0&pageSize=10&mode=0&sortType=1`
+    });
+    const arr = {
+      type: CATE_DATA,
+      pyload: data.data
     };
     dispatch(arr);
   };

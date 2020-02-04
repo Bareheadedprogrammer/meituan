@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { getMeiShi } from "../store/createAction";
-
-import "./index.less";
+import { getCateData } from "../store/createAction";
+import { getReData } from "../../store/createAction";
+import "../meishi/index.less";
 import format from "../../../utils/dateChuli";
 import { notification, Icon } from "antd";
 import Tail from "../tail";
@@ -13,11 +13,14 @@ class index extends Component {
     super(props);
     this.state = {
       sort: "default", // default代表质量排序, limit代表时间排序
-      tags: null
+      tags: 0
     };
   }
 
   componentDidMount() {
+    if (!this.props.list) {
+      this.props.getData("all");
+    }
     this.props.getDefaultData(this.props.match.params.id);
   }
 
@@ -69,7 +72,7 @@ class index extends Component {
     }
     return (
       <Fragment>
-        <div className="content">
+        <div className="content cate">
           <Tail />
           <div className="btm-cont clear">
             <div className="btm-left">
@@ -104,19 +107,29 @@ class index extends Component {
                       时间排序
                     </span>
                   </div>
-                  {total}条网友点评
+                  网友评论
                 </div>
                 <div className="com-cont">
                   {tags && tags.length > 0 && (
-                    <ul className="tags clear">
+                    <ul className="labels-box">
+                      <li
+                        onClick={() => {
+                          this.changeTags(0);
+                        }}
+                        className={0 === this.state.tags ? "label-active" : ""}
+                      >
+                        全部({total})
+                      </li>
                       {tags.map((v, i) => {
                         return (
                           <li
                             key={i}
                             onClick={() => {
-                              this.changeTags(i);
+                              this.changeTags(i + 1);
                             }}
-                            className={i === this.state.tags ? "onSel" : ""}
+                            className={
+                              i + 1 === this.state.tags ? "label-active" : ""
+                            }
                           >{`${v.tag}(${v.count})`}</li>
                         );
                       })}
@@ -126,6 +139,10 @@ class index extends Component {
                     <span>
                       <b></b>
                       只看有图片的评论
+                    </span>
+                    <span className="pianZuo">
+                      <b></b>
+                      只看低分
                     </span>
                   </div>
                   <div>
@@ -142,7 +159,15 @@ class index extends Component {
                               </div>
                             </div>
                             <div className="info">
-                              <div className="name">{v.userName}</div>
+                              <div className="name">
+                                {v.userName}
+                                {v.userLevel !== 0 && <img className="user-level" src={`http://s1.meituan.net/bs/fe-web-meituan/97ed363/img/level-color/level_${v.userLevel}.svg`} alt="图片" />}
+                              </div>
+                              <div className="deal-name">
+                                {
+                                  v.menu
+                                }
+                              </div>
                               <div className="date">
                                 <span>{format(v.commentTime)}</span>
                               </div>
@@ -247,18 +272,20 @@ class index extends Component {
 const mapStateToProps = state => {
   return {
     like: state.get("Home").get("reData"),
-    tags: state.get("Detail").get("tags"),
-    comments: state.get("Detail").get("comments"),
+    tags: state.get("Detail").get("tagsCate"),
+    comments: state.get("Detail").get("commentsCate"),
     isLogin: state.get("Header").get("isLogin"),
-    total: state.get("Detail").get("total"),
-    list: state.get("Home").get("reData")
+    total: state.get("Detail").get("totalCate")
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getDefaultData(data) {
-      dispatch(getMeiShi(data));
+      dispatch(getCateData(data));
+    },
+    getData(data) {
+      dispatch(getReData(data));
     }
   };
 };
