@@ -281,3 +281,27 @@ import App from './route';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
+
+## react-redux的connect装饰器配置
+
+1. `npm install -D @babel/plugin-proposal-decorators`
+
+2. 配置.babelrc 文件或package.json文件的 babel 字段值（两者二选一，不要都配置，否者会报找到两个配置文件的错
+
+（1）配置 .babelrc 文件
+
+```js
+ "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+  ]
+```
+
+（2）配置 package.json 文件的 babel 字段值
+
+```js
+babel: {
+    "plugins": [
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ]
+}
+```

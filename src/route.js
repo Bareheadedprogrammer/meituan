@@ -10,6 +10,7 @@ import Login from "./component/login";
 import Search from "./component/search";
 import Meishi from "./component/detail/meishi";
 import Cate from "./component/detail/cate";
+import Jiudian from "./component/detail/jiudian";
 import store from "./store/store";
 
 // 路由配置
@@ -26,6 +27,7 @@ export default class route extends PureComponent {
               <Route path="/s/:content" component={Search}></Route>
               <Route path="/meishi/:id" component={Meishi}></Route>
               <Route path="/cate/:id" component={Cate}></Route>
+              <Route path="/jiudian/:id" component={Jiudian}></Route>
               <Route path="*" component={Error} />
             </Switch>
             <FooterNav />
