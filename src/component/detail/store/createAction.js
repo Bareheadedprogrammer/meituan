@@ -1,5 +1,9 @@
 import axios from "axios";
-import { GET_DATA, CATE_DATA, JIU_CATE_DATA } from "./constant";
+import {
+  GET_DATA,
+  CATE_DATA,
+  JIU_CATE_DATA
+} from "./constant";
 
 // 获取quality的数据
 export const getMeiShi = pytho => {

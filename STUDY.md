@@ -346,3 +346,29 @@ export default ScrollToTop;
     <Footer />
 </ScrollToTop>
 ```
+
+## 在react中使用百度地图API
+
+1. 在public下面的index.html中追加
+
+```js
+<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=您的密钥"></script>
+```
+
+2. 在react中使用的时候需要注意**BMap等前面必须添加window**
+
+```js
+componentDidMount() {
+  var map = new window.BMap.Map('address'); 
+  var point = new window.BMap.Point(116.404, 39.915);
+  map.centerAndZoom(new window.BMap.Point(116.404, 39.915), 10);
+  var marker = new window.BMap.Marker(point);  // 创建标注
+  map.addControl(new window.BMap.MapTypeControl()); 
+  map.setCurrentCity("北京"); 
+  map.enableScrollWheelZoom();
+  map.addOverlay(marker);               // 将标注添加到地图中
+  marker.setAnimation(window.BMAP_ANIMATION_BOUNCE); //跳动的动画
+  var label = new window.BMap.Label("欢迎前来入住",{offset:new window.BMap.Size(20,-10)});
+  marker.setLabel(label)
+}
+```

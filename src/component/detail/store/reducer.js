@@ -1,5 +1,9 @@
 import { fromJS } from "immutable";
-import { GET_DATA, CATE_DATA, JIU_CATE_DATA } from "./constant";
+import {
+  GET_DATA,
+  CATE_DATA,
+  JIU_CATE_DATA
+} from "./constant";
 const defaultState = fromJS({
   tags: [],
   comments: [],

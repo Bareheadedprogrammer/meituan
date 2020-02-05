@@ -269,6 +269,7 @@
 }
 
 .see-more-goods {
+  cursor: pointer;
   span {
     margin: 0 10px;
   }
@@ -289,6 +290,10 @@
 .deal-cellname {
   font-weight: 700;
   display: inline-block;
+}
+
+.see-more-goods .fc6 {
+  color: #666;
 }
 .mb15 {
   margin-bottom: 15px;
@@ -436,4 +441,119 @@
 }
 .bor-bottom-dotted {
   border-bottom: 1px dotted #333;
+}
+
+.deal-section .deal-item.is-extended .goods:hover {
+  background: rgba(19, 209, 190, 0.05);
+}
+
+.ant-modal-confirm-content ul {
+  font-size: 12px;
+  line-height: 2;
+  span {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+// 酒店样式
+.sub-content {
+  padding: 10px 0 65px;
+}
+.main-info {
+  width: 100%;
+  float: left;
+}
+
+.main-info,
+.sub-info {
+  position: relative;
+  min-height: 1px;
+}
+
+#poiDetail h2 {
+  position: relative;
+  font-size: 20px;
+  padding-bottom: 10px;
+  color: #333;
+  line-height: 2;
+  margin-top: 20px;
+}
+
+.traffic-box {
+  min-width: 950px;
+  width: 100%;
+}
+
+.map-wrapper {
+  float: left;
+  width: calc(100% - 415px);
+  height: 415px;
+}
+
+.near-place {
+  display: inline-block;
+  width: 415px;
+  height: 412px;
+}
+
+.p20 {
+  padding: 20px;
+}
+
+.near-place .place-btn {
+  float: left;
+  cursor: pointer;
+  margin-right: 40px;
+  padding-bottom: 20px;
+}
+
+.near-place .around-detail {
+  height: 347.5px;
+  overflow: auto;
+}
+
+.near-place .place-line-item {
+  padding: 13.5px 0;
+}
+
+.clear {
+  overflow: hidden;
+}
+
+.near-place .number-color[data-v-e5ef183c] {
+  color: #f90;
+}
+
+.mt5 {
+  margin-top: 5px;
+}
+
+.fc3 {
+  color: #333;
+}
+
+.near-place .icon-huoche{
+  width: 20px;
+  height: 20px;
+  background-size: 100% 100%;
+  font-size: 20px!important;
+  color: #13d1be;
+}
+
+.near-place .place-btn.current {
+  color: #13d1be;
+  border-bottom: 2px solid #13d1be;
+}
+
+.bor-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.fs14 {
+  font-size: 14px;
+}
+
+.ml25 {
+  margin-left: 25px;
 }
