@@ -142,6 +142,9 @@ class Jiudian extends Component {
             <div className="breadcrumb-nav">
               酒店
               <span className="breadcrumb-divider">></span>
+              <svg className="icon" aria-hidden="true">
+                <use xlinkHref="icon-meishi"></use>
+              </svg>
             </div>
             <div
               id="deal"
