@@ -5,6 +5,21 @@ import { Link } from "react-router-dom";
 import { getReData } from "../store/createAction";
 import "./index.less";
 
+const mapStateToProps = state => {
+  return {
+    list: state.get("Home").get("reData")
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getData(data) {
+      dispatch(getReData(data));
+    }
+  };
+};
+
+@connect(mapStateToProps, mapDispatchToProps)
 class Home extends PureComponent {
   componentDidMount = () => {
     if (this.props.list.size === 0) {
@@ -47,7 +62,7 @@ class Home extends PureComponent {
               return (
                 <Link
                   className="link link recommend-item"
-                  to={{ pathname: `meishi/${item.itemId}`}}
+                  to={{ pathname: `meishi/${item.itemId}` }}
                   key={item.itemId}
                 >
                   <div className="card-container">
@@ -132,18 +147,4 @@ class Home extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    list: state.get("Home").get("reData")
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getData(data) {
-      dispatch(getReData(data));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

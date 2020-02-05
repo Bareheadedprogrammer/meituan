@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from "react";
 import { Link } from "react-router-dom";
-import data from "../../config/footer.json";
+import data from "../../../config/footer.json";
 import "./index.less";
 
 class Footer extends PureComponent {

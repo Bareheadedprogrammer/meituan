@@ -5,6 +5,14 @@ import Right from './header-right';
 import HeaderContent from './content';
 import "./index.less";
 
+const mapStateToProps = state => {
+  return {
+    isLogin: state.get("Header").get("isLogin"),
+    city: state.get("Header").get("city")
+  };
+};
+
+@connect(mapStateToProps,null)
 class Header extends PureComponent {
   render() {
     const { city } = this.props;
@@ -38,13 +46,4 @@ class Header extends PureComponent {
   }
 }
 
-// const mapDispatchToProps = dispatch => {};
-
-const mapStateToProps = state => {
-  return {
-    isLogin: state.get("Header").get("isLogin"),
-    city: state.get("Header").get("city")
-  };
-};
-
-export default connect(mapStateToProps, null)(Header);
+export default Header

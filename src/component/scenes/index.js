@@ -5,6 +5,22 @@ import { Link } from "react-router-dom";
 import { getHomeData } from "../store/createAction";
 import "./index.less";
 
+const mapStateToProps = state => {
+  return {
+    list: state.get("Home").get("data"),
+    have: state.get("Home").get("have")
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getData(data) {
+      dispatch(getHomeData(data));
+    }
+  };
+};
+
+@connect(mapStateToProps, mapDispatchToProps)
 class Home extends PureComponent {
   constructor(props) {
     super(props);
@@ -142,19 +158,4 @@ class Home extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    list: state.get("Home").get("data"),
-    have: state.get("Home").get("have")
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getData(data) {
-      dispatch(getHomeData(data));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

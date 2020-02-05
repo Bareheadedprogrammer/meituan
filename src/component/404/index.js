@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./index.less";
 
+const mapStateToProps = state => {
+  return {
+    error_message: state.get("Error").get("error_message")
+  };
+};
+
+@connect(mapStateToProps, null)
 class Home extends PureComponent {
   constructor(props) {
     super(props);
@@ -27,10 +34,4 @@ class Home extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    error_message: state.get("Error").get("error_message")
-  };
-};
-
-export default connect(mapStateToProps, null)(Home);
+export default Home;

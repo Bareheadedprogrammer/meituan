@@ -305,3 +305,44 @@ babel: {
     ]
 }
 ```
+
+## 路由跳转之后没有返回页面顶部
+
+在src下面创建`ScrollToTop.js` 组件
+
+```js
+import React from "react";
+import { withRouter } from "react-router-dom";
+
+@withRouter
+class ScrollToTop extends React.PureComponent {
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0);
+    }
+  }
+  render() {
+    return this.props.children;
+  }
+}
+export default ScrollToTop;
+```
+
+在router.js中引入并且使用
+
+```js
+<ScrollToTop>
+    <Header />
+        <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/s/:content" component={Search}></Route>
+            <Route path="/meishi/:id" component={Meishi}></Route>
+            <Route path="/cate/:id" component={Cate}></Route>
+            <Route path="/jiudian/:id" component={Jiudian}></Route>
+            <Route path="*" component={Error} />
+        </Switch>
+    <FooterNav />
+    <Footer />
+</ScrollToTop>
+```

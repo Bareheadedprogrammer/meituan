@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "./index.less";
 
+@withRouter
 class Content extends PureComponent {
   constructor(props) {
     super(props);
@@ -178,4 +179,4 @@ class Content extends PureComponent {
   }
 }
 
-export default withRouter(Content);
+export default Content;

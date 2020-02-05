@@ -5,6 +5,22 @@ import { Link } from "react-router-dom";
 import { getFilmData } from "../store/createAction";
 import "./index.less";
 
+const mapStateToProps = state => {
+  return {
+    list: state.get("Home").get("filmData"),
+    have: state.get("Home").get("filmHave")
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getData(data) {
+      dispatch(getFilmData(data));
+    }
+  };
+};
+
+@connect(mapStateToProps, mapDispatchToProps)
 class Home extends PureComponent {
   constructor(props) {
     super(props);
@@ -175,19 +191,4 @@ class Home extends PureComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    list: state.get("Home").get("filmData"),
-    have: state.get("Home").get("filmHave")
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getData(data) {
-      dispatch(getFilmData(data));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

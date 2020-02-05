@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import data from "../../config/footer-nav.json";
+import data from "../../../config/footer-nav.json";
 import { Link } from "react-router-dom";
 import "./index.less";
 
