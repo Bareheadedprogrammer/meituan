@@ -26,8 +26,8 @@ export default class route extends PureComponent {
                 render={() => {
                   return (
                     <App>
-                      <Route exact path="/" component={Home} />
                       <Switch>
+                        <Route exact path="/" component={Home} />
                         <Route path="/s/:content" component={Search}></Route>
                         <Route path="/meishi/:id" component={Meishi}></Route>
                         <Route path="/cate/:id" component={Cate}></Route>
