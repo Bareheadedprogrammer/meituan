@@ -7,7 +7,7 @@ export const getPhoneValue = phone => {
   return async dispatch => {
     const code = getCode(6);
     const data = await axios.get(
-      `/code/phone?tel=${phone}&code=${code}`
+      `/server/code/phone?tel=${phone}&code=${code}`
     );
     const arr = {
       type: GET_PHONE_VALUE,
@@ -25,7 +25,7 @@ export const getPhoneValue = phone => {
 export const getUserInfo = obj => {
   return async dispatch => {
     const data = await axios.get(
-      `/code/register?phone=${obj.tel}&password=${obj.password}&code=${obj.code}`
+      `/server/code/register?phone=${obj.tel}&password=${obj.password}&code=${obj.code}`
     );
     const arr = {
       type: USER_INFO,
