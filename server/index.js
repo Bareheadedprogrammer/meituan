@@ -8,10 +8,6 @@ router.use('/server/reptile',require("./router/reptile.js"));
 // 注册登录路由加载
 router.use('/server/code',require("./router/code.js"));
 
-router.use('/',async (ctx)=>{
-  console.log(ctx)
-})
-
 // 加载所有路由
 app.use(router.routes()); /*启动路由*/
 app.use(router.allowedMethods());

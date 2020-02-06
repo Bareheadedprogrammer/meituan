@@ -2,14 +2,15 @@ import React, { Component, Fragment } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Form, Icon, Input, Button } from "antd";
 import { connect } from "react-redux";
-import { getPhoneValue, getUserInfo } from "../store/createAction";
+import { getPhoneValue, getUserInfo, getPhoneRe } from "../store/createAction";
 import "./index.less";
 
 @connect(
   state => {
     return {
       code: state.get("Header").get("code"),
-      isLogin: state.get("Header").get("isLogin")
+      isLogin: state.get("Header").get("isLogin"),
+      re: state.get("Header").get("re")
     };
   },
   dispatch => {
@@ -19,6 +20,9 @@ import "./index.less";
       },
       getRegister(values) {
         dispatch(getUserInfo(values));
+      },
+      yanPhone(phone) {
+        dispatch(getPhoneRe(phone));
       }
     };
   }
@@ -47,15 +51,24 @@ class index extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      if (!err) {
+      if (!err && !this.props.re) {
         this.props.getRegister(values);
       }
     });
   };
 
-  getPhoneValue = () => {
+  // 查看手机是否注册过
+  getYanShou = () => {
     const data = this.props.form.getFieldValue("tel");
     if (/^1[3456789]\d{9}$/.test(data)) {
+      this.props.yanPhone(data);
+    }
+  };
+
+  //获取验证码
+  getPhoneValue = () => {
+    const data = this.props.form.getFieldValue("tel");
+    if (/^1[3456789]\d{9}$/.test(data) && !this.props.re) {
       this.props.getPhoneCodeDefault(data);
       this.setState({
         isGet: true
@@ -76,7 +89,7 @@ class index extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { isLogin } = this.props;
+    const { isLogin, re } = this.props;
     const formItemLayout = {
       labelCol: { span: 4 },
       wrapperCol: { span: 7 }
@@ -119,6 +132,7 @@ class index extends Component {
                       <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                     }
                     placeholder="手机号"
+                    onKeyUp={this.getYanShou}
                   />
                 )}
                 <Button
@@ -129,6 +143,7 @@ class index extends Component {
                     ? `还剩${this.state.miao}获取验证码`
                     : "获取验证码"}
                 </Button>
+                {re && <Link className="phone" to="/zhao">手机号已经注册,找回密码</Link>}
               </Form.Item>
               <Form.Item label="动态验证码">
                 {getFieldDecorator("code", {

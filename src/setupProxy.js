@@ -14,12 +14,6 @@ module.exports = function(app) {
     })
   );
   app.use(
-    proxy("/code", {
-      target: "http://localhost:4000/", //爬虫跨域
-      changeOrigin: true
-    })
-  );
-  app.use(
     proxy("/meishi", {
       target: "https://www.meituan.com", //美食跨域
       changeOrigin: true

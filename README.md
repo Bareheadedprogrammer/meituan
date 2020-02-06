@@ -66,25 +66,34 @@ npm run server // 需要本地有mongodb数据库,并且已经启动即可
 ```conf
 # 美团项目
 server {
-    listen       3000; // 这里面改成自己服务器端口即可
+	listen       3002;
 
-    server_name  shtodream.cn;
-    location / {
-        root   html/meituan/build;
-        index  index.html index.htm;
-    }
+	server_name  shtodream.cn;
 
-    location /ptapi {
-            proxy_pass https://www.meituan.com;
-    }
+	location / {
+			root   html/meituan/build;
+			index  index.html index.htm;
+	}
 
-    location /reptile {
-            proxy_pass http://shtodream.cn:4000/;
-    }
+	location /ptapi {
+			proxy_pass https://www.meituan.com;
+	}
 
-    location /meishi {
-            proxy_pass https://www.meituan.com;
-    }
+	location /meishi {
+			proxy_pass https://www.meituan.com;
+	}
+
+	location /group {
+			proxy_pass https://ihotel.meituan.com;
+	}
+
+	location /detailapi {
+			proxy_pass https://ihotel.meituan.com;
+	}
+
+	location /server {
+			proxy_pass http://localhost:4000;
+	}
 
 }
 ```

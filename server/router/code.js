@@ -12,6 +12,7 @@ const PHONECODE = "80a1580da2040d43e6aa990d78a203d1";
     如：content={"code":"测试0"}
     mobile 改为 发送的手机号
 */
+// 获取验证码
 code.get("/phone", async (ctx, next) => {
   const params = ctx.query;
   // 进行url编码转换
@@ -29,6 +30,7 @@ code.get("/phone", async (ctx, next) => {
   ctx.body = result.data;
 });
 
+// 用来注册
 code.get("/register", async (ctx, next) => {
   const params = ctx.query;
   if (ctx.cookies.get("code") === params.code) {
@@ -57,5 +59,16 @@ code.get("/register", async (ctx, next) => {
     });
   }
 });
+
+// 判断手机号是否被注册过
+code.get('/re',async (ctx)=>{
+  const params = ctx.query;
+  const obj = await Meituan.findOne({phone:params.phone})
+  if(obj){
+    ctx.body = true
+  }else{
+    ctx.body = false
+  }
+})
 
 module.exports = code.routes();
