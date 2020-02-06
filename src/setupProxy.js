@@ -9,7 +9,7 @@ module.exports = function(app) {
   );
   app.use(
     proxy("/reptile", {
-      target: "http://localhost:4000/", //爬虫跨域
+      target: "http://localhost:4000/", // 后台数据请求
       changeOrigin: true
     })
   );

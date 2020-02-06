@@ -55,8 +55,8 @@ cd meituan && npm install
 
 ```js
 // 两个都需要一直挂在才可以,如果麻烦可以使用pm2
-npm run server 
 npm run start
+npm run server // 需要本地有mongodb数据库,并且已经启动即可
 ```
 
 默认启动在3001端口上
