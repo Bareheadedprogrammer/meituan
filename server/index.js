@@ -4,9 +4,13 @@ const router = require("koa-router")();
 const app = new Koa();
 
 // 加载爬虫路由
-router.use('/reptile/reptile',require("./router/reptile.js")); 
+router.use('/reptile',require("./router/reptile.js")); 
 // 注册登录路由加载
-router.use('/reptile/code',require("./router/code.js"));
+router.use('/code',require("./router/code.js"));
+
+router.use('/',async (ctx)=>{
+  console.log(ctx)
+})
 
 // 加载所有路由
 app.use(router.routes()); /*启动路由*/
