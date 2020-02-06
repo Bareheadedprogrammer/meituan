@@ -372,3 +372,59 @@ componentDidMount() {
   marker.setLabel(label)
 }
 ```
+
+## koa-cookie,koa-router
+
+本项目中把路由进行了抽离
+
+```js
+const router = require("koa-router")();
+// 加载爬虫路由
+router.use('/server/reptile',require("./router/reptile.js")); 
+// 注册登录路由加载
+router.use('/server/code',require("./router/code.js"));
+
+// 加载所有路由
+app.use(router.routes()); /*启动路由*/
+app.use(router.allowedMethods());
+```
+
+## mongoose操作数据库
+
+独立创建一个model文件,把每个数据库的模型存储在里面,对外暴露一个方法,这个方法用来获取`Schema`
+
+在操作的时候
+  
+1. 导入模型
+2. 通过对外暴露的函数得到Schema
+3. new 实例化
+4. 调用mongoose的方法即可
+
+```js
+// 加载mongodb数据库
+const model = require("../model/mongoose");
+const Meituan = model.getNames("meituan");
+// 操作数据库
+const createTime = new Date().getTime(); 
+const userModel = new Meituan({
+  createTime,
+    password: params.password,
+    phone: params.phone,
+    name: params.phone
+  });
+let result = {};
+try {
+  let obj = await userModel.save();
+  obj.password = ""; //保护密码不背查看到
+  result.userinfo = obj;
+  result.code = "1";
+} catch (err) {
+  result = { code: "2", message: "服务器发生了错误" };
+}
+   ctx.body = JSON.stringify(result);
+} else {
+ ctx.body = JSON.stringify({
+  code: "3",
+  message: "验证码填写错误,请重新查看或者重新获取"
+});
+```

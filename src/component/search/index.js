@@ -15,7 +15,7 @@ class Home extends PureComponent {
   async searchEveryThing(e){
     const data = await axios({
       method: "get",
-      url: `/reptile/home?keyword=${e}`
+      url: `/server/reptile/home?keyword=${e}`
     });
     this.setState({
       msg: data.data

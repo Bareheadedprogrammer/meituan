@@ -25,6 +25,9 @@
 - [x] react-redux的connect装饰器配置
 - [x] 路由跳转之后没有返回顶部
 - [x] 在react中使用百度地图API
+- [x] koa-cookie,koa-router等koa2的基本使用
+- [x] mongoose操作数据库
+- [x] 页面注册,验证码发送,密码加盐
 
 > 为了方便以后自己学习,也方便看到的人更好的学习,我会把每一个步骤如何完成的方法写在里面 -> [文档](/STUDY.md)
 
