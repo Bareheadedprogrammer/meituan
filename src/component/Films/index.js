@@ -26,7 +26,7 @@ class Home extends PureComponent {
     super(props);
     this.state = {
       item: 0,
-      url: "getHotFilms",
+      url: "getComingFilms",
       fangwen: [],
       nextClick: false
     };
@@ -34,7 +34,7 @@ class Home extends PureComponent {
 
   componentDidMount = () => {
     if (this.props.list.size === 0) {
-      this.props.getData("getHotFilms");
+      this.props.getData("getComingFilms");
     }
   };
 
