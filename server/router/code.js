@@ -1,9 +1,11 @@
 const code = require("koa-router")();
 const axios = require("axios");
+const jwt = require("jsonwebtoken");
 // 加载mongodb数据库
 const model = require("../model/mongoose");
 const Meituan = model.getNames("meituan");
-
+// 密码加盐
+const hashCode = require("../utils/hashCode");
 // 这个是我个人的一个验证码平台,资金有限,如果大家使用尽量就是用来自己测试,不要随意使用,短信低于一定数量之后我会停掉这个接口
 const PHONECODE = "80a1580da2040d43e6aa990d78a203d1";
 
@@ -36,18 +38,31 @@ code.get("/register", async (ctx, next) => {
   if (ctx.cookies.get("code") === params.code) {
     // 操作数据库
     const createTime = new Date().getTime();
+    const newPassword = hashCode(params.password);
     const userModel = new Meituan({
       createTime,
-      password: params.password,
+      password: newPassword.passwordHash,
       phone: params.phone,
-      name: params.phone
+      name: params.phone,
+      salt: newPassword.salt
     });
     let result = {};
     try {
       let obj = await userModel.save();
       obj.password = ""; //保护密码不背查看到
+      obj.salt = "";
       result.userinfo = obj;
       result.code = "1";
+      // 生成加密token
+      const token = jwt.sign(
+        {
+          name: obj.name,
+          _id: obj._id
+        },
+        "sh",
+        { expiresIn: "2h" }
+      );
+      result.token = token;
     } catch (err) {
       result = { code: "2", message: "服务器发生了错误" };
     }
@@ -61,14 +76,53 @@ code.get("/register", async (ctx, next) => {
 });
 
 // 判断手机号是否被注册过
-code.get('/re',async (ctx)=>{
+code.get("/re", async ctx => {
   const params = ctx.query;
-  const obj = await Meituan.findOne({phone:params.phone})
-  if(obj){
-    ctx.body = true
-  }else{
-    ctx.body = false
+  const obj = await Meituan.findOne({ phone: params.phone });
+  if (obj) {
+    ctx.body = true;
+  } else {
+    ctx.body = false;
   }
-})
+});
+
+// 进行登录
+code.post("/login", async ctx => {
+  let postData = ctx.request.body;
+  const obj = await Meituan.findOne({ phone: postData.phone });
+  let result = {};
+  if (obj) {
+    const data = await Meituan.findOne({ _id: obj._id });
+    const salt = data.salt;
+    const newMiMa = hashCode(postData.password, salt);
+    if (newMiMa.passwordHash === data.password) {
+      data.password = ""; //保护密码不背查看到
+      data.salt = "";
+      result.userinfo = data;
+      result.code = "1";
+      // 生成加密token
+      const token = jwt.sign(
+        {
+          name: data.name,
+          _id: data._id
+        },
+        "sh",
+        { expiresIn: "2h" }
+      );
+      result.token = token;
+    } else {
+      result = {
+        code: 2,
+        message: "密码不正确"
+      };
+    }
+  } else {
+    result = {
+      code: 2,
+      message: "手机号不存在"
+    };
+  }
+  ctx.body = JSON.stringify(result);
+});
 
 module.exports = code.routes();

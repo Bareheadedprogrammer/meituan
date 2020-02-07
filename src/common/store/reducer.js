@@ -1,12 +1,16 @@
 import { fromJS } from "immutable";
-import { GET_PHONE_VALUE, USER_INFO, REGISTER_INFO } from "./constant";
+import {
+  GET_PHONE_VALUE,
+  USER_INFO,
+  REGISTER_INFO
+} from "./constant";
 
 const defaultData = fromJS({
-  isLogin: false,
+  isLogin: localStorage.getItem("isLogin") || false,
   city: "哈尔滨",
   message: "",
   code: "",
-  userinfo: null,
+  userinfo: localStorage.getItem("userinfo") || null,
   re: false
 });
 
@@ -18,6 +22,12 @@ export default (state = defaultData, action) => {
       if (action.pyload.code !== "1") {
         return state;
       } else {
+        localStorage.setItem("meituanToken", action.pyload.token); // 存储token,以后每次发出请求都要验证
+        localStorage.setItem("isLogin", true);
+        localStorage.setItem(
+          "userinfo",
+          JSON.stringify(action.pyload.userinfo)
+        );
         return state
           .set("isLogin", true)
           .set("userinfo", action.pyload.userinfo);

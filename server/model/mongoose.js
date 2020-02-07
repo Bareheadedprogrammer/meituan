@@ -17,7 +17,9 @@ const models = {
     // 昵称
     name: { type: String },
     // 地区
-    address: { type: String }
+    address: { type: String },
+    // 密码的盐
+    salt: { type: String, require: true }
   }
 };
 

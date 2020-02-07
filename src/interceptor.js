@@ -10,6 +10,8 @@ import { Toast } from "antd-mobile";
 //拦截请求
 axios.interceptors.request.use(function(config) {
   //  不拦截搜索内容
+  const token = localStorage.getItem('meituanToken');
+  config.headers.common['Authorization'] = 'Bearer ' + token;
   if(config.url && config.url.indexOf("suggest") === -1){
     Toast.loading("加载中", 0);
   }

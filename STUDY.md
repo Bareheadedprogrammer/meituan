@@ -430,3 +430,93 @@ try {
 ```
 
 > 需要注意的是他的操作方法都是异步的,最好使用async/await
+
+## 密码加盐
+
+1. 编写函数
+
+```js
+var crypto = require("crypto");
+// 生成salt盐
+var genRandomString = function(length) {
+  return crypto
+    .randomBytes(Math.ceil(length / 2))
+    .toString("hex") /** convert to hexadecimal format */
+    .slice(0, length); /** return required number of characters */
+};
+/**
+ * 加密函数
+ * @function
+ * @param {string} password - List of required fields.
+ * @param {string} salt - Data to be validated.
+ */
+var sha512 = function(password, salt) {
+  var hash = crypto.createHmac("sha512", salt);
+  hash.update(password);
+  var value = hash.digest("hex");
+  return {
+    salt: salt,
+    passwordHash: value
+  };
+};
+
+// 生成加密字符串
+module.exports = function saltHashPassword(userpassword, salt = genRandomString(16)) {
+  var passwordData = sha512(userpassword, salt);
+  return passwordData;
+};
+```
+
+2. 把获取的密码调用saltHashPassword这个函数
+
+```js
+saltHashPassword(123) => 就会获得密码和盐
+```
+
+3. 盐需要存储在数据库中,下一次登录的时候,要获取这个盐
+
+## jwt鉴权
+
+在koa中,需要用到两个中间件
+
+1. 当注册或者登录的时候,服务器生成token
+
+```js
+const jwt = require("jsonwebtoken");
+const token = jwt.sign(
+  {
+    name: obj.name,
+    _id: obj._id
+  },
+  "sh",
+  { expiresIn: "2h" }
+);
+// 并且把token返回给客户端
+```
+
+2. 在前端获取到token
+
+```js
+localStorage.setItem("meituanToken", action.pyload.token); // 存储token,以后每次发出请求都要验证
+```
+
+3. 每次发出请求之前携带token
+
+```js
+const token = localStorage.getItem('meituanToken');
+config.headers.common['Authorization'] = 'Bearer ' + token;
+```
+
+4. 服务器验证token
+
+```js
+const koa = require('koa');
+const koajwt = require('koa-jwt');
+const app = new koa();
+
+app.use(koajwt({
+ secret: 'zhangnan'
+}).unless({
+  path: [/\/register/, /\/login/]
+}));
+```

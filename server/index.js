@@ -1,7 +1,9 @@
 const config = require("./config");
 const Koa = require("koa");
 const router = require("koa-router")();
+const bodyParser = require('koa-bodyparser');
 const app = new Koa();
+app.use(bodyParser());
 
 // 加载爬虫路由
 router.use('/server/reptile',require("./router/reptile.js")); 

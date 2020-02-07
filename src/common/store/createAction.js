@@ -34,7 +34,6 @@ export const getUserInfo = obj => {
     if (data.data.code !== "1") {
       message.error(data.data.message);
     }
-    console.log(data.data);
     dispatch(arr);
   };
 };
@@ -42,11 +41,32 @@ export const getUserInfo = obj => {
 export const getPhoneRe = phone => {
   return async dispatch => {
     const data = await axios.get(`/server/code/re?phone=${phone}`);
-    console.log(data.data);
     const arr = {
       type: REGISTER_INFO,
       pyload: data.data
+    };
+    dispatch(arr);
+  };
+};
+
+// 登录设置
+export const userLoginClick = Values => {
+  return async dispatch => {
+    const data = await axios({
+      method: "post",
+      url: "/server/code/login",
+      data: {
+        phone: Values.tel,
+        password: Values.password
+      }
+    });
+    if (data.data.code !== "1") {
+      message.error(data.data.message);
     }
-    dispatch(arr)
+    const arr = {
+      type: USER_INFO,
+      pyload: data.data
+    };
+    dispatch(arr);
   };
 };

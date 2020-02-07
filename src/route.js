@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import Home from "./component/Home";
 import Error from "./component/404";
 import Register from "./common/Register";
+import Login from "./common/Login";
 import Search from "./component/search";
 import Meishi from "./component/detail/meishi";
 import Cate from "./component/detail/cate";
@@ -21,6 +22,7 @@ export default class route extends PureComponent {
           <ScrollToTop>
             <Switch>
               <Route path="/register" component={Register} />
+              <Route path="/login" component={Login} />
               <Route
                 path="/"
                 render={() => {
