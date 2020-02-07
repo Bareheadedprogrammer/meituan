@@ -115,7 +115,7 @@ class index extends Component {
                   <div className="quxiaoLabel">
                     <div className="term">
                       还没有账号?
-                      <Link to="/loading">免费注册</Link>
+                      <Link to="/register">免费注册</Link>
                     </div>
                   </div>
                 </Form.Item>

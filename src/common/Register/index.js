@@ -52,6 +52,7 @@ class index extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err && !this.props.re) {
+        values.gai = 2;
         this.props.getRegister(values);
       }
     });
@@ -143,7 +144,11 @@ class index extends Component {
                     ? `还剩${this.state.miao}获取验证码`
                     : "获取验证码"}
                 </Button>
-                {re && <Link className="phone" to="/zhao">手机号已经注册,找回密码</Link>}
+                {re && (
+                  <Link className="phone" to="/zhao">
+                    手机号已经注册,找回密码
+                  </Link>
+                )}
               </Form.Item>
               <Form.Item label="动态验证码">
                 {getFieldDecorator("code", {

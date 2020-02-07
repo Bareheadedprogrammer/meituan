@@ -35,43 +35,74 @@ code.get("/phone", async (ctx, next) => {
 // 用来注册
 code.get("/register", async (ctx, next) => {
   const params = ctx.query;
-  if (ctx.cookies.get("code") === params.code) {
-    // 操作数据库
-    const createTime = new Date().getTime();
-    const newPassword = hashCode(params.password);
-    const userModel = new Meituan({
-      createTime,
-      password: newPassword.passwordHash,
-      phone: params.phone,
-      name: params.phone,
-      salt: newPassword.salt
-    });
+  if (params.gai == 1) {
     let result = {};
-    try {
-      let obj = await userModel.save();
-      obj.password = ""; //保护密码不背查看到
-      obj.salt = "";
-      result.userinfo = obj;
-      result.code = "1";
-      // 生成加密token
-      const token = jwt.sign(
-        {
-          name: obj.name,
-          _id: obj._id
-        },
-        "sh",
-        { expiresIn: "2h" }
-      );
-      result.token = token;
-    } catch (err) {
-      result = { code: "2", message: "服务器发生了错误" };
-    }
+    // 改密码
+    console.log(params.phone);
+    const obj = await Meituan.findOne({ phone: params.phone });
+    // 获取盐
+    const salt = obj.salt;
+    const newPassword = hashCode(params.password, salt);
+    console.log(params.phone);
+    const a = await Meituan.updateOne(
+      { phone: params.phone },
+      { $set: { password: newPassword.passwordHash } }
+    );
+    console.log(a);
+    obj.password = ""; //保护密码不背查看到
+    obj.salt = "";
+    result.userinfo = obj;
+    result.code = "1";
+    // 生成加密token
+    const token = jwt.sign(
+      {
+        name: obj.name,
+        _id: obj._id
+      },
+      "sh",
+      { expiresIn: "2h" }
+    );
+    result.token = token;
     ctx.body = JSON.stringify(result);
   } else {
-    ctx.body = JSON.stringify({
-      code: "3",
-      message: "验证码填写错误,请重新查看或者重新获取"
-    });
+    if (ctx.cookies.get("code") === params.code) {
+      // 操作数据库
+      const createTime = new Date().getTime();
+      const newPassword = hashCode(params.password);
+      const userModel = new Meituan({
+        createTime,
+        password: newPassword.passwordHash,
+        phone: params.phone,
+        name: params.phone,
+        salt: newPassword.salt
+      });
+      let result = {};
+      try {
+        let obj = await userModel.save();
+        obj.password = ""; //保护密码不背查看到
+        obj.salt = "";
+        result.userinfo = obj;
+        result.code = "1";
+        // 生成加密token
+        const token = jwt.sign(
+          {
+            name: obj.name,
+            _id: obj._id
+          },
+          "sh",
+          { expiresIn: "2h" }
+        );
+        result.token = token;
+      } catch (err) {
+        result = { code: "2", message: "服务器发生了错误" };
+      }
+      ctx.body = JSON.stringify(result);
+    } else {
+      ctx.body = JSON.stringify({
+        code: "3",
+        message: "验证码填写错误,请重新查看或者重新获取"
+      });
+    }
   }
 });
 
@@ -84,6 +115,18 @@ code.get("/re", async ctx => {
   } else {
     ctx.body = false;
   }
+});
+
+// 判断验证码是否正确
+code.get("/yan", async ctx => {
+  const params = ctx.query;
+  let result = {};
+  if (ctx.cookies.get("code") === params.code) {
+    result = { code: 1, message: "验证码正确" };
+  } else {
+    result = { code: 2, message: "验证码错误" };
+  }
+  ctx.body = JSON.stringify(result);
 });
 
 // 进行登录

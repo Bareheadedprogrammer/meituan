@@ -10,6 +10,7 @@ import Meishi from "./component/detail/meishi";
 import Cate from "./component/detail/cate";
 import Jiudian from "./component/detail/jiudian";
 import ScrollToTop from "./ScrollToTop";
+import Zhao from "./common/zhao";
 import App from "./app";
 import store from "./store/store";
 
@@ -21,6 +22,7 @@ export default class route extends PureComponent {
         <BrowserRouter>
           <ScrollToTop>
             <Switch>
+              <Route path="/zhao" component={Zhao} />
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
               <Route

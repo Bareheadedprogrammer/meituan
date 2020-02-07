@@ -2,7 +2,8 @@ import { fromJS } from "immutable";
 import {
   GET_PHONE_VALUE,
   USER_INFO,
-  REGISTER_INFO
+  REGISTER_INFO,
+  CHECK_CODE
 } from "./constant";
 
 const defaultData = fromJS({
@@ -11,7 +12,8 @@ const defaultData = fromJS({
   message: "",
   code: "",
   userinfo: localStorage.getItem("userinfo") || null,
-  re: false
+  re: false,
+  yan: false
 });
 
 export default (state = defaultData, action) => {
@@ -34,6 +36,12 @@ export default (state = defaultData, action) => {
       }
     case REGISTER_INFO:
       return state.set("re", action.pyload);
+    case CHECK_CODE:
+      if (action.pyload.code === 1) {
+        return state.set("yan", true);
+      } else {
+        return state.set("yan", false);
+      }
     default:
       return state;
   }
