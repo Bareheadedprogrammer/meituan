@@ -9,6 +9,16 @@
 
 [![Build Status](https://www.travis-ci.org/2662419405/meituan.svg?branch=master)](https://www.travis-ci.org/2662419405/meituan)
 
+## 其余端支持
+
+* 美团电脑网页 React + Koa + Mongoose <a href="https://github.com/2662419405/meituan">开发完毕</a> :tada:
+
+* 美团手机网页 Nuxt + Mongoose + koa <a href="https://github.com/2662419405/meituanAn">正在开发</a>
+
+* 美团APP ReactNative <a href="#">还未开发</a>
+
+* 微信小程序 Tora <a href="#">还未开发</a>
+
 ## 完成
 
 - [x] 自动部署到服务器
