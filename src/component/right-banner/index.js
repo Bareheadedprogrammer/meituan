@@ -118,10 +118,10 @@ class index extends Component {
                     />
                   </div>
                   <p className="user-name">Hi！你好</p>
-                  <Link className="btn-login" to="/login">
+                  <Link className="btn-login" to="/register">
                     注册
                   </Link>
-                  <Link className="btn-login" to="/register">
+                  <Link className="btn-login" to="/login">
                     立即登录
                   </Link>
                 </div>

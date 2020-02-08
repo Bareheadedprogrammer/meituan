@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { getMeiShi } from "../store/createAction";
-
+import { Link } from "react-router-dom";
 import "./index.less";
 import format from "../../../utils/dateChuli";
 import { notification, Icon } from "antd";
@@ -83,7 +83,7 @@ class index extends Component {
                     />
                     <span>请登录后查看详细团购优惠</span>
                     <button className="btn btn-default btn-clr-g">
-                      立即登录
+                      <Link to="/login" className="kongbai">立即登录</Link>
                     </button>
                   </div>
                 )}
