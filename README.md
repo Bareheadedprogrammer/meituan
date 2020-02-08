@@ -111,10 +111,10 @@ server {
 ├─build                                   // 打包生成的文件结构
 ├─config                                  // webpack配置文件
 ├─public                                  // 默认渲染的模板
-├─server  								  // 后台
-│  ├─model          					  // 数据库原型     
-│  ├─router          				  	  // 路由
-│  ├─utils          				 	  // 常用函数编写
+├─server                                  // 后台
+│  ├─model                                // 数据库原型     
+│  ├─router                               // 路由
+│  ├─utils                                // 常用函数编写
 │  ├─config                               // 修改端口设置
 │  ├─index                                // 后台入口文件
 ├─src                                     // 前台
@@ -172,8 +172,8 @@ server {
 │  │  ├─Rigister
 │  │  ├─store
 │  │  ├─zhao
-├─.travis.yml							   // 可持续集成
-├─STUDY.md						           // 每一个完成任务的步骤
+├─.travis.yml                             // 可持续集成
+├─STUDY.md                                // 每一个完成任务的步骤
 ```
 
 如果还有bug和建议,欢迎告诉我  (͏ ˉ ꈊ ˉ)✧˖°
