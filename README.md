@@ -102,7 +102,7 @@ server {
 
 * 包展示
 
-<img src="/img/1.png">
+<img src="https://cdn.jsdelivr.net/gh/2662419405/imgs/tu/meituan.png"/>
 
 * 目录结构
 
