@@ -12,10 +12,6 @@ axios.interceptors.request.use(function(config) {
   // jwt添加header的token
   const token = localStorage.getItem("meituanToken");
   config.headers.common["Authorization"] = "Bearer " + token;
-  // 不拦截首页请求,首页使用骨架屏
-  if (window.location.pathname === "/") {
-    return config;
-  }
   //  不拦截搜索内容 
   if (config.url && config.url.indexOf("suggest") === -1) {
     Toast.loading("加载中", 0);
