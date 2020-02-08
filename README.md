@@ -107,73 +107,73 @@ server {
 * 目录结构
 
 ```js
-    // 项目结构
-    ├─build                                   // 打包生成的文件结构
-	├─config                                  // webpack配置文件
-	├─public                                  // 默认渲染的模板
-    ├─server  								  // 后台
-    │  ├─model          					  // 数据库原型     
-    │  ├─router          				  	  // 路由
-	│  ├─utils          				 	  // 常用函数编写
-	│  ├─config                               // 修改端口设置
-	│  ├─index                                // 后台入口文件
-	├─src                                     // 前台
-    │  ├─app                                  // 首页容器组件
-    │  ├─router                               // 路由配置
-    │  ├─setupProxy                           // 代理配置
-	│  ├─ScrollToTop                          // 路由返回顶部组件
-	│  ├─interceptor                          // axios请求拦截
-	│  ├─index                                // 入口文件
-    │  ├─config                               // 默认的json数据
-    │  │  ├─banner.json
-	│  │  ├─banner-left.json
-	│  │  ├─film.json
-	│  │  ├─footer.json
-	│  │  ├─footer-nav.json
-	│  │  ├─header-title.json
-	│  │  ├─header-right.json
-	│  │  ├─offer.json
-	│  │  ├─secenes.json
-	│  │  ├─recommend.json
-    │  ├─static                               // 静态文件
-    │  │  ├─logo
-	│  │  ├─img
-    │  ├─utils                                // 工具函数
-    │  │  ├─code                              // 生成随机验证码
-	│  │  ├─imgReturn                         // 正则解决美团图片加密
-	│  │  ├─dataChuli                         // 时间转换格式
-    │  ├─store                                // store
-    │  │  ├─reducer                           // 合并多个reducer文件
-	│  │  ├─store                             // store入口文件
-    │  ├─component                            // 全局组件
-    │  │  ├─404
-    │  │  ├─banner
-    │  │  ├─Films
-    │  │  ├─Home
-    │  │  ├─left-banner
-    │  │  ├─offer
-    │  │  ├─recommend
-    │  │  ├─right-banner
-    │  │  ├─search
-    │  │  ├─scenes
-    │  │  ├─store
-	│  │  ├─detail                            // 二级路由 包括 美食 酒店 旅游 等
-	│  │  │  ├─jiudian
-	│  │  │  ├─cate
-	│  │  │  ├─jiudian
-	│  │  │  ├─meishi
-	│  │  │  ├─right
-	│  │  │  ├─store
-	│  │  │  ├─tail
-    │  ├─component                            // 公共组件
-    │  │  ├─footer
-    │  │  ├─header
-    │  │  ├─Login
-    │  │  ├─Rigister
-    │  │  ├─store
-    │  │  ├─zhao
-	├─.travis.yml							   // 可持续集成
-	├─STUDY.md						           // 每一个完成任务的步骤
+// 项目结构
+├─build                                   // 打包生成的文件结构
+├─config                                  // webpack配置文件
+├─public                                  // 默认渲染的模板
+├─server  								  // 后台
+│  ├─model          					  // 数据库原型     
+│  ├─router          				  	  // 路由
+│  ├─utils          				 	  // 常用函数编写
+│  ├─config                               // 修改端口设置
+│  ├─index                                // 后台入口文件
+├─src                                     // 前台
+│  ├─app                                  // 首页容器组件
+│  ├─router                               // 路由配置
+│  ├─setupProxy                           // 代理配置
+│  ├─ScrollToTop                          // 路由返回顶部组件
+│  ├─interceptor                          // axios请求拦截
+│  ├─index                                // 入口文件
+│  ├─config                               // 默认的json数据
+│  │  ├─banner.json
+│  │  ├─banner-left.json
+│  │  ├─film.json
+│  │  ├─footer.json
+│  │  ├─footer-nav.json
+│  │  ├─header-title.json
+│  │  ├─header-right.json
+│  │  ├─offer.json
+│  │  ├─secenes.json
+│  │  ├─recommend.json
+│  ├─static                               // 静态文件
+│  │  ├─logo
+│  │  ├─img
+│  ├─utils                                // 工具函数
+│  │  ├─code                              // 生成随机验证码
+│  │  ├─imgReturn                         // 正则解决美团图片加密
+│  │  ├─dataChuli                         // 时间转换格式
+│  ├─store                                // store
+│  │  ├─reducer                           // 合并多个reducer文件
+│  │  ├─store                             // store入口文件
+│  ├─component                            // 全局组件
+│  │  ├─404
+│  │  ├─banner
+│  │  ├─Films
+│  │  ├─Home
+│  │  ├─left-banner
+│  │  ├─offer
+│  │  ├─recommend
+│  │  ├─right-banner
+│  │  ├─search
+│  │  ├─scenes
+│  │  ├─store
+│  │  ├─detail                            // 二级路由 包括 美食 酒店 旅游 等
+│  │  │  ├─jiudian
+│  │  │  ├─cate
+│  │  │  ├─jiudian
+│  │  │  ├─meishi
+│  │  │  ├─right
+│  │  │  ├─store
+│  │  │  ├─tail
+│  ├─component                            // 公共组件
+│  │  ├─footer
+│  │  ├─header
+│  │  ├─Login
+│  │  ├─Rigister
+│  │  ├─store
+│  │  ├─zhao
+├─.travis.yml							   // 可持续集成
+├─STUDY.md						           // 每一个完成任务的步骤
 ```
 
 如果还有bug和建议,欢迎告诉我  (͏ ˉ ꈊ ˉ)✧˖°
