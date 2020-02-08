@@ -48,9 +48,6 @@ class Home extends PureComponent {
                       onMouseEnter={() => this.showDetailShow(index)}
                     >
                       <i className={[item.icon, "iconfont"].join(" ")}></i>
-                      <svg className="icon" aria-hidden="true">
-                          <use xlinkHref="icon-meirong"></use>
-                      </svg>
                       <span className="nav-text-wrapper">
                         {item.title.map((i, d) => {
                           return (

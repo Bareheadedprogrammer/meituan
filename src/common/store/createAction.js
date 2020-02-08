@@ -2,7 +2,8 @@ import {
   GET_PHONE_VALUE,
   USER_INFO,
   REGISTER_INFO,
-  CHECK_CODE
+  CHECK_CODE,
+  CLEAR_EVERY
 } from "./constant";
 import { getCode } from "../../utils/code";
 import { message } from "antd";
@@ -30,7 +31,7 @@ export const getPhoneValue = phone => {
 
 export const getUserInfo = obj => {
   return async dispatch => {
-    console.log(":"+obj)
+    console.log(":" + obj);
     const data = await axios.get(
       `/server/code/register?phone=${obj.tel}&password=${obj.password}&code=${obj.code}&gai=${obj.gai}`
     );
@@ -38,7 +39,7 @@ export const getUserInfo = obj => {
       type: USER_INFO,
       pyload: data.data
     };
-    console.log(":"+obj)
+    console.log(":" + obj);
     if (data.data.code !== "1") {
       message.error(data.data.message);
     }
@@ -67,6 +68,14 @@ export const getPhoneResult = phone => {
     };
     dispatch(arr);
   };
+};
+
+// 清除登录状态
+export const clearSignout = () => {
+  const arr = {
+    type: CLEAR_EVERY
+  };
+  return arr;
 };
 
 // 判断验证码是否正确

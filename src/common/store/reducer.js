@@ -3,11 +3,12 @@ import {
   GET_PHONE_VALUE,
   USER_INFO,
   REGISTER_INFO,
-  CHECK_CODE
+  CHECK_CODE,
+  CLEAR_EVERY
 } from "./constant";
 
 const defaultData = fromJS({
-  isLogin: localStorage.getItem("isLogin") || false,
+  isLogin: localStorage.getItem("isLogin") === "false" || localStorage.getItem("isLogin") === null ? false : true,
   city: "哈尔滨",
   message: "",
   code: "",
@@ -42,6 +43,11 @@ export default (state = defaultData, action) => {
       } else {
         return state.set("yan", false);
       }
+    case CLEAR_EVERY:
+      localStorage.setItem("isLogin", false);
+      localStorage.setItem("userinfo", {});
+      localStorage.setItem("meituanToken", "");
+      return state.set("isLogin", false).set("userinfo", {});
     default:
       return state;
   }
