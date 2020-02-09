@@ -84,45 +84,27 @@ npm run server
 ```conf
 # 美团项目
 server {
-	listen       3002;
-
-	server_name  shtodream.cn;
-
-	location / {
-			root   html/meituan/build;
-			index  index.html index.htm;
-	}
-
-	location /ptapi {
-			proxy_pass https://www.meituan.com;
-	}
-
-	location /meishi {
-			proxy_pass https://www.meituan.com;
-	}
-
-	location /group {
-			proxy_pass https://ihotel.meituan.com;
-	}
-
-	location /detailapi {
-			proxy_pass https://ihotel.meituan.com;
-	}
-
-	location /server {
-			proxy_pass http://localhost:4000;
-	}
-
+    listen       80;
+    location / {
+        root   /var/www/html;
+        index  index.html index.htm;
+    }
+    location /ptapi {
+            proxy_pass https://www.meituan.com;
+    }
+    location /meishi {
+            proxy_pass https://www.meituan.com;
+    }
+    location /group {
+            proxy_pass https://ihotel.meituan.com;
+    }
+    location /detailapi {
+            proxy_pass https://ihotel.meituan.com;
+    }
+    location /server {
+        proxy_pass http://app-pm2:4000;
+    }
 }
-```
-
-3. 使用pm2启动
-
-> 需要本地有mongoose
-
-```js
-pm2 start start.yaml
-pm2 start server.yaml
 ```
 
 > 已经配置为监听状态,双核启动
