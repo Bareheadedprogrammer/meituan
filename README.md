@@ -13,7 +13,7 @@
 
 * 美团电脑网页 React + Koa + Mongoose <a href="https://github.com/2662419405/meituan">开发完毕</a> :tada:
 
-* 美团手机网页 Nuxt + Mongoose + koa <a href="https://github.com/2662419405/meituanAn">正在开发</a>
+* 美团手机网页 Dva + umi + koa + Mongoose <a href="https://github.com/2662419405/meituanAn">正在开发</a>
 
 * 美团APP ReactNative <a href="#">还未开发</a>
 

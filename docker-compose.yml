@@ -1,11 +1,11 @@
 version: '3.1'
 services:
-  # app-pm2:
-  #     container_name: app-pm2
-  #     #构建容器
-  #     build: ./server
-  #     ports:
-  #       - "4000:4000"
+  app-pm2:
+      container_name: app-pm2
+      #构建容器
+      build: ./server
+      ports:
+        - "4000:4000"
   mongo:
     image: mongo
     restart: always
@@ -16,11 +16,11 @@ services:
     restart: always 
     ports:
       - 8081:8081
-  # nginx:
-  #   restart: always
-  #   image: nginx
-  #   ports:
-  #     - 8091:80
-  #   volumes:
-  #     - ./nginx/:/etc/nginx/conf.d
-  #     - ./build/:/var/www/html/
+  nginx:
+    restart: always
+    image: nginx
+    ports:
+      - 8091:80
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d
+      - ./build/:/var/www/html/
