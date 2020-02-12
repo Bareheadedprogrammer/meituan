@@ -5,6 +5,6 @@ import "./interceptor.js";
 import "antd/dist/antd.css";
 import "antd-mobile/dist/antd-mobile.css";
 import App from "./route";
-import "./utils/pc";
+// import "./utils/pc";
 
 ReactDOM.render(<App />, document.getElementById("root"));
