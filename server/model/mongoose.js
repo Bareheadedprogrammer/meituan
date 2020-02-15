@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 //数据库的地址
-const DB_URL = "mongodb://localhost:27017/meituanPC";
+const DB_URL = "mongodb://localhost:27017/meituan";
 mongoose.connect(DB_URL);
 
 const models = {
