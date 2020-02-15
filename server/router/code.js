@@ -3,7 +3,7 @@ const axios = require("axios");
 const jwt = require("jsonwebtoken");
 // 加载mongodb数据库
 const model = require("../model/mongoose");
-const Meituan = model.getNames("meituan");
+const Meituan = model.getNames("meituanPC");
 // 密码加盐
 const hashCode = require("../utils/hashCode");
 // 这个是我个人的一个验证码平台,资金有限,如果大家使用尽量就是用来自己测试,不要随意使用,短信低于一定数量之后我会停掉这个接口
