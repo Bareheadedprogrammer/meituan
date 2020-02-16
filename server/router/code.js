@@ -72,9 +72,14 @@ code.get("/register", async (ctx, next) => {
       const userModel = new Meituan({
         createTime,
         password: newPassword.passwordHash,
-        phone: params.phone,
-        name: params.phone,
-        salt: newPassword.salt
+        phone: ctx.request.body.code.tel,
+        name: ctx.request.body.code.tel,
+        salt: newPassword.salt,
+        firstPas: false,
+        level: 1,
+        collections: ['123'],
+        quans: ['12', '34', '56'],
+        chous: [],
       });
       let result = {};
       try {

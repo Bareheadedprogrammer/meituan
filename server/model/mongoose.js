@@ -19,8 +19,18 @@ const models = {
     // 地区
     address: { type: String },
     // 密码的盐
-    salt: { type: String, require: true }
-  }
+    salt: { type: String, require: true },
+    // 第一次注册密码是否被修改
+    firstPas: { type: Boolean },
+    // 美团会员等级
+    level: { type: Number },
+    // 收藏列表
+    collections: { type: Array },
+    // 抵用券列表
+    quans: { type: Array },
+    // 抽奖券
+    chous: { type: Array },
+  },
 };
 
 for (let m in models) {
