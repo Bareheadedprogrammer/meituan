@@ -21,7 +21,7 @@
 
 * Taro多端支持 <a href="https://github.com/2662419405/meituan-taro">正在开发</a>
 
-* 美团APP ReactNative + koa + Mongoose <a href="https://github.com/2662419405/meituanApp">开发一部分</a
+* 美团APP ReactNative + koa + Mongoose <a href="https://github.com/2662419405/meituanApp">开发一部分</a>
 
 ## 完成
 
